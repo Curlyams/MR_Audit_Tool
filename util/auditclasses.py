@@ -262,7 +262,7 @@ class AuditDataFrame:
     def cancel_with_distribution_date(self):
         df = self.df.copy()
         df = df.query(
-            "`Trip Status Summary` == 'cx/NS' and `Distribution Date` not in @exclude and `Backdating Process` == 'no'"
+            "`Trip Status Summary` == 'cx/NS' and `Distribution Date` not in @exclude_canc_dd and `Backdating Process` == 'no'"
         )
         return df
 
@@ -482,8 +482,9 @@ class AuditDataFrame:
     # Function to identify completed trips with cancel type
     def comp_with_cancel(self):
         df = self.df.copy()
+        
         df = df.query(
-            "`Mode` == 'Reimbursement' and `Transportation Provider` != '' and `Trip Status` == 'comp' and `Mileage vs NOT-Mileage vs PR/BT` == 'Mileage' and `Distribution Date` == '' and `Cancel Type` not in ('','Not Selected')"
+            "`Mode` == 'Reimbursement' and `Transportation Provider` != '' and `Trip Status` == 'comp' and `Mileage vs NOT-Mileage vs PR/BT` == 'Mileage' and `Distribution Date` == '' and `Cancel Type` not in @exclude_comp_cancel"
         )
         return df
 

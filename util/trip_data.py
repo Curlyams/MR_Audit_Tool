@@ -12,7 +12,9 @@ tricounty = [
 ]
 
 # What to exclude when checking for cancel with distribution date
-exclude = ["None", "", "OK SS", "OK BV"]
+exclude_canc_dd = ["None", "", "OK SS", "OK BV"]
+# What to exclude when checking comp with cancel
+exclude_comp_cancel = ['Backdating Mileage','','Not Selected']
 
 # Labels for flagged trips
 
