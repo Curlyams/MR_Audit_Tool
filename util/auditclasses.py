@@ -4,6 +4,7 @@ from datetime import datetime, timedelta, date
 import xlrd
 from util.trip_data import *
 from util.df_functions import *
+import warnings
 
 
 # Define a class named AuditDataFrame
@@ -143,10 +144,13 @@ class AuditDataFrame:
                 return formatted_date
 
         except Exception as e:
+            print(e)
             _date = pd.to_datetime(excel_date, format="%m/%d/%Y")
             _date = _date.date()  # Extract only the date component
             formatted_date = _date.strftime("%m/%d/%Y")
             return formatted_date
+
+
 
     # Function to return a weekly audit date range
     def get_weekly_audit_date_range(self):
@@ -181,7 +185,7 @@ class AuditDataFrame:
     def iso_weekly_audit_date_range(self):
         audit_end_date, audit_start_date = self.get_weekly_audit_date_range()
 
-        self.df["Trip Date"] = pd.to_datetime(self.df["Trip Date"], format="%m/%d/%Y")
+        #self.df["Trip Date"] = pd.to_datetime(self.df["Trip Date"], format="%m/%d/%Y")
         self.df = self.df[
             (self.df["Trip Date"] >= audit_start_date)
             & (self.df["Trip Date"] <= audit_end_date)
@@ -223,6 +227,8 @@ class AuditDataFrame:
     # Function to format the 'Trip Date' column to "mm/dd/yyyy"
     def update_trip_dates(self):
         self.df["Trip Date"] = self.df["Trip Date"].apply(self.date_formatter)
+        self.df["Trip Date"] = pd.to_datetime(self.df["Trip Date"])
+        self.df["Trip Date"] = self.df["Trip Date"].dt.strftime("%m/%d/%Y")
 
     # Function to replace a specific old_value in a given column with a new_value
     def change_value(self, old_value, new_value, column_name):
@@ -237,7 +243,8 @@ class AuditDataFrame:
         # date_range_change_62 = datetime.strptime("12/31/2022", "%m/%d/%Y")
         # date_range_change_58 = datetime.strptime("06/30/2022", "%m/%d/%Y")
         # rate_change_start = datetime.strptime("01/01/2022", "%m/%d/%Y")
-        date_rate_change_65 = datetime.strptime("06/01/2023", "%m/%d/%Y")
+        raw_date_range_65 = datetime.strptime("06/01/2023", "%m/%d/%Y")
+        date_rate_change_65 = raw_date_range_65.strftime("%m/%d/%Y")
 
         # self.df["Trip Date"] = pd.to_datetime(self.df["Trip Date"], format="%m/%d/%Y")
 
@@ -284,7 +291,7 @@ class AuditDataFrame:
         df = self.df.copy()
 
         df = df.query(
-            "`Trip Status Summary` == 'comp etc.' and `Pick-up County` in @tricounty and `Drop-off County` in @tricounty"
+            "`Trip Status Summary` == 'comp etc.'  and `Pick-up County` in @tricounty and `Drop-off County` in @tricounty"
         ).astype(str)
 
         df["Date at PU + DO for Member"] = (
@@ -355,7 +362,7 @@ class AuditDataFrame:
         )
 
         duplicate_trips = duplicate_trips.query(
-            "`Transportation Provider` == 'Reimbursement Mileage'"
+            "`Transportation Provider` == 'Reimbursement Mileage' and `Distribution Date` == ''"
         )
         payable_duplicate_trips = duplicate_trips[
             "Date at PU + DO for Member"
@@ -421,39 +428,43 @@ class AuditDataFrame:
         _, df = self.single_leg_trips()
         # df["Mileage Reimbursements"] = df["Mileage Reimbursements"].astype(int)
         excessive_trips = df.query(
-            "`Mileage Reimbursements` > 4 and `Pick-up County` in @tricounty and `Drop-off County` in @tricounty and `Distribution Date` == '' and `Trip Status Summary` == 'comp etc.'"
+            "`Mileage Reimbursements` > 4 and `Pick-up County` in @tricounty and `Drop-off County` in @tricounty and `Distribution Date` == '' and `Trip Status Summary` == 'comp etc.' and `Verification` not in @exclude_excess_apps"
         )
         return excessive_trips
 
     # Function to identify single legs within one day
     def single_legs_within_one_day(self):
-        single_legs_within_one_day_df = pd.DataFrame()
-        prev_row = None
-        single_trips, _ = self.single_leg_trips()
-        single_trips = single_trips.sort_values(
-            ["Customer Number", "Trip Date"]
-        )  # Sort by Customer Number and Trip Date
-        for index, row in single_trips.iterrows():
-            if (
-                prev_row is None
-                or row["Customer Number"] != prev_row["Customer Number"]
-            ):
-                prev_row = row
-            else:
-                current_date = datetime.strptime(row["Trip Date"], "%m/%d/%Y")
-                prev_date = datetime.strptime(prev_row["Trip Date"], "%m/%d/%Y")
-                date_difference = (current_date - prev_date).days
-                if abs(date_difference) <= 1:
-                    single_legs_within_one_day_df = (
-                        single_legs_within_one_day_df.append(row, ignore_index=True)
-                    )
-                    single_legs_within_one_day_df = (
-                        single_legs_within_one_day_df.append(
-                            prev_row, ignore_index=True
-                        )
-                    )
-                prev_row = row
-        return single_legs_within_one_day_df
+        # Ignoring the warning for the future removal of the append method in pandas
+        # If a newer version of pandas is installed, use the concat method instead will require a rework of this function
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            
+            single_legs_within_one_day_df = pd.DataFrame()
+            prev_row = None
+            single_trips, _ = self.single_leg_trips()
+            single_trips = single_trips.sort_values(
+                ["Customer Number", "Trip Date"]
+            )  # Sort by Customer Number and Trip Date
+            
+            # Iterate over the single_trips DataFrame
+            for index, row in single_trips.iterrows():
+                # Check if the current row is the first row or has a different customer number than the previous row
+                if prev_row is None or row["Customer Number"] != prev_row["Customer Number"]:
+                    prev_row = row
+                else:
+                    current_date = datetime.strptime(row["Trip Date"], "%m/%d/%Y")
+                    prev_date = datetime.strptime(prev_row["Trip Date"], "%m/%d/%Y")
+                    date_difference = (current_date - prev_date).days
+                    
+                    # Check if the date difference is within one day and the drop-off and pick-up street numbers match
+                    if abs(date_difference) <= 1 and row["Drop-off Street Number"] == prev_row["Pick-up Street Number"]:
+                        # Append both the current row and the previous row to the single_legs_within_one_day_df DataFrame
+                        single_legs_within_one_day_df = single_legs_within_one_day_df.append(row, ignore_index=True)
+                        single_legs_within_one_day_df = single_legs_within_one_day_df.append(prev_row, ignore_index=True)
+                    
+                    prev_row = row
+                    
+            return single_legs_within_one_day_df
 
     # Function to export taxi-related data
     def taxi_export(self):
@@ -467,7 +478,7 @@ class AuditDataFrame:
     def ooa_export(self):
         df = self.df.copy()
         df = df.query(
-            "`Mode` == 'Reimbursement' and (`Pick-up County` not in @tricounty or `Drop-off County` not in @tricounty)"
+            "`Mode` == 'Reimbursement' and (`Pick-up County` not in @tricounty or `Drop-off County` not in @tricounty) and `Distribution Date` == '' and `Trip Status Summary` == 'comp etc.'"
         )
         return df
 
@@ -516,55 +527,73 @@ class WeeklyAudit(AuditDataFrame):
             cancel_types_df=cancel_types_df,
         )
         # Apply the weekly audit date range and update rate functions
-
+        self.update_trip_dates()
+        self.iso_weekly_audit_date_range()
         self.update_trip_dates()
 
-        self.iso_weekly_audit_date_range()
+
         self.add_data()
         self.update_rate()
 
-    def run_audit(self):
+    def run_weekly_audit(self):
         df = self.in_area_mileage_reimbursement()
 
-        blank_provider = self.blank_provider_iso()
-        cancel_with_dd = self.cancel_with_distribution_date()
-        incorrect_td_date = self.incorrect_td_date()
-        duplicate_trips = self.duplicate_trips()
-        single_legs, _ = self.single_leg_trips()
-        ooa_trips = self.ooa_export()
-        purpose_error_trips = self.trip_purpose_error()
-        comp_w_cancel = self.comp_with_cancel()
-        excessive_trips = self.excessive_trips()
+        flagged_trips = self.get_flagged_trips()
+        flagged_trip_ids = self.get_flagged_trip_ids(flagged_trips)
+
+        pass_single_trip_ids = self.get_single_leg_trip_ids()
+        pass_dups_trip_ids = self.get_duplicate_trip_ids()
+
+        fiscal_summary = self.get_fiscal_summary(df, flagged_trip_ids, pass_single_trip_ids, pass_dups_trip_ids)
+
         taxi_questions = self.taxi_export()
 
+        return fiscal_summary, flagged_trips, taxi_questions
+
+
+    def get_flagged_trips(self):
         flagged_dfs = [
-            blank_provider,
-            cancel_with_dd,
-            incorrect_td_date,
-            duplicate_trips,
-            single_legs,
-            ooa_trips,
-            purpose_error_trips,
-            comp_w_cancel,
-            excessive_trips,
+            self.blank_provider_iso(),
+            self.cancel_with_distribution_date(),
+            self.incorrect_td_date(),
+            self.duplicate_trips(),
+            self.single_leg_trips()[0],
+            self.ooa_export(),
+            self.trip_purpose_error(),
+            self.comp_with_cancel(),
+            self.excessive_trips(),
+            self.pass_duplicate_trips()
         ]
 
         add_flag_column_to_dataframes(flagged_dfs, flag_labels)
         flagged_trips = stack_dfs(flagged_dfs)
+        flagged_trips = flagged_trips[flagged_cols]
+        return flagged_trips
 
-        flagged_lst = flagged_trips["Trip ID"].tolist()
-        flagged_lst = [str(item) for item in flagged_lst]
-        df["Trip ID"] = df["Trip ID"].astype(str)
-        fiscal_summary = df.query("`Trip ID` not in @flagged_lst")
-        self.drop_columns(fiscal_summary)
-        # fiscal_summary = remove_matching_rows(df,flagged_trips,"Trip ID","Trip ID")
 
-        # payable_dupes = self.pass_duplicate_trips()
-        # payable_singles = self.single_legs_within_one_day()
-        # payable_list = [payable_dupes, payable_trips]# payable_singles]
-        # mr_payable_trips = stack_dfs(payable_list)
+    def get_flagged_trip_ids(self, flagged_trips):
+        flagged_trip_ids = flagged_trips["Trip ID"].astype(str).tolist()
+        return flagged_trip_ids
 
-        return fiscal_summary, flagged_trips, taxi_questions
+
+    def get_single_leg_trip_ids(self):
+        pass_single = self.single_legs_within_one_day()
+        pass_single_trip_ids = pass_single["Trip ID"].astype(str).tolist()
+        return pass_single_trip_ids
+
+
+    def get_duplicate_trip_ids(self):
+        pass_duplicate_trips = self.pass_duplicate_trips()
+        pass_dups_trip_ids = pass_duplicate_trips["Trip ID"].astype(str).tolist()
+        return pass_dups_trip_ids
+
+
+    def get_fiscal_summary(self, df, flagged_trip_ids, pass_single_trip_ids, pass_dups_trip_ids):
+        flagged_trip_ids = list(set(flagged_trip_ids) - set(pass_single_trip_ids) - set(pass_dups_trip_ids))
+        fiscal_summary = df[~df["Trip ID"].astype(str).isin(flagged_trip_ids)]
+        fiscal_summary = fiscal_summary[fiscal_summary_cols]
+        return fiscal_summary
+
 
 
 class SecondPaymentsAudit(AuditDataFrame):
