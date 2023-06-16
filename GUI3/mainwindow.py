@@ -118,18 +118,28 @@ class errorUi(QDialog):
 
 from PySide6.QtCore import QThread, Signal
 
-class FlaggedTripsWorker(QtCore.QObject):
+class FlaggedTripsWorker(QThread):
     progressUpdated = Signal(int)
     finished = Signal(list)
 
-    def __init__(self, checkboxes, function_lst, class_object, parent=None):
+    def __init__(self, checkboxes, function_lst, export_path, parent=None):
         super().__init__(parent)
         self.checkboxes = checkboxes
         self.function_lst = function_lst
-        self.class_object = class_object
+        self.export_path = export_path
+        
+
         
 
     def run(self):
+        progress = 0
+        self.progressUpdated.emit(progress)
+        export_df = pd.read_csv(self.export_path, encoding="ISO-8859-1", low_memory=False)
+        progress += 5
+        self.progressUpdated.emit(progress)
+        self.class_object = WeeklyAudit(export_df)
+        progress += 10
+        self.progressUpdated.emit(progress)
         selected_functions = []
         flags = []
 
@@ -140,8 +150,7 @@ class FlaggedTripsWorker(QtCore.QObject):
                 flags.append(label)
 
         total = len(selected_functions)
-        progress = 0
-        self.progressUpdated.emit(progress)
+        progress_increment = (100 - progress) / total
 
         results = []
 
@@ -156,9 +165,8 @@ class FlaggedTripsWorker(QtCore.QObject):
 
             results.append(result)
 
-            progress += 1
-            progress_percent = int(progress / total * 100)
-            self.progressUpdated.emit(progress_percent)
+            progress += progress_increment
+            self.progressUpdated.emit(int(progress))
 
         self.finished.emit(results)
 
@@ -251,16 +259,16 @@ class MainWindow(QMainWindow):
 
         #############################################################
           # #---> Initialising all the checkboxes
-        self.checkBox_bprovider = self.findChild(QCheckBox, "checkBox_bprovider")
-        self.checkBox_candd= self.findChild(QCheckBox, "checkBox_candd")
-        self.checkBox_tddate= self.findChild(QCheckBox, "checkBox_tddate")
-        self.checkBox_duptrips = self.findChild(QCheckBox, "checkBox_duptrip")
-        self.checkBox_1leg = self.findChild(QCheckBox, "checkBox_1leg")
-        self.checkBox_ooa = self.findChild(QCheckBox, "checkBox_ooa")
-        self.checkBox_trippurp = self.findChild(QCheckBox, "checkBox_trippurp")
-        self.checkBox_compwcan = self.findChild(QCheckBox, "checkBox_compwcan")
-        self.checkBox_excapps = self.findChild(QCheckBox, "checkBox_excapps")
-        self.checkBox_paiddups = self.findChild(QCheckBox, "checkBox_paiddups")
+        # self.checkBox_bprovider = self.findChild(QCheckBox, "checkBox_bprovider")
+        # self.checkBox_candd= self.findChild(QCheckBox, "checkBox_candd")
+        # self.checkBox_tddate= self.findChild(QCheckBox, "checkBox_tddate")
+        # self.checkBox_duptrips = self.findChild(QCheckBox, "checkBox_duptrip")
+        # self.checkBox_1leg = self.findChild(QCheckBox, "checkBox_1leg")
+        # self.checkBox_ooa = self.findChild(QCheckBox, "checkBox_ooa")
+        # self.checkBox_trippurp = self.findChild(QCheckBox, "checkBox_trippurp")
+        # self.checkBox_compwcan = self.findChild(QCheckBox, "checkBox_compwcan")
+        # self.checkBox_excapps = self.findChild(QCheckBox, "checkBox_excapps")
+        # self.checkBox_paiddups = self.findChild(QCheckBox, "checkBox_paiddups")
 
 
 
@@ -338,26 +346,26 @@ class MainWindow(QMainWindow):
         self.ui.progressBar_audit.setValue(progress)
     
     def process_flagged_trips(self,results):
-        print(results)
+        flagged_df = WeeklyAudit.concat_flagged_trips(results)
+        
+        print(flagged_df)
 
     def run_audit(self):
-        if self.worker is not None and self.worker_thread_audit.isRunning():
+        if self.worker is not None and self.worker.isRunning():
             return
         
-        export_path = self.ui.export_path.text()
-        export_df = pd.read_csv(export_path, encoding="ISO-8859-1", low_memory=False)
+
 
         if not (self.onlysec_audit.isChecked() or self.secweek_audit.isChecked()):
-            audit = WeeklyAudit(export_df)
+            
+            export_path = self.ui.export_path.text()
+            self.worker = FlaggedTripsWorker(gd.flag_checkboxes_names, gd.function_names, export_path, parent = self)
 
-            self.worker = FlaggedTripsWorker(gd.flag_checkboxes_names, gd.function_names, audit, parent = self)
-            self.worker_thread_audit = QtCore.QThread()
-            self.worker.moveToThread(self.worker_thread_audit)
             #  Connect Signals to slots
             self.worker.progressUpdated.connect(self.update_progress)
             self.worker.finished.connect(self.process_flagged_trips)
-            self.worker_thread_audit.started.connect(self.worker.run)
-            self.worker_thread_audit.start()
+    
+            self.worker.start()
         else:
             print("na")
     
