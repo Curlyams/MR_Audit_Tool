@@ -7,6 +7,13 @@ from datetime import datetime
 file_path = input("Enter file path: ").strip('"')
 export_df = pd.read_csv(file_path, encoding="ISO-8859-1", low_memory=False)
 audit = WeeklyAudit(data=export_df)
+# singles = audit.remove_paid_single_trips()
+# dups = audit.flagged_duplicate_trips()
+
+# old_singles, _ = audit.single_leg_trips()
+# old_singles.to_csv('old_singles.csv', index=False)
+# singles.to_csv('singles.csv', index=False)
+# dups.to_csv('dups.csv', index=False)
 
 fiscal_summary, flagged_trips, taxi_questions = audit.run_weekly_audit()
 
@@ -34,11 +41,11 @@ taxi_trips = os.path.join(folder_path, f"{formatted_date} Taxi Questions.csv")
 # Save flagged trips, fiscal summary, and taxi questions to CSV files
 flagged_trips.to_csv(flagged, index=False)
 fiscal_summary.to_csv(payable_trips, index=False)
-taxi_questions.to_csv(taxi_trips, index=False)
+# taxi_questions.to_csv(taxi_trips, index=False)
 
-# secondary = SecondPaymentsAudit(data=export_df)
+# # secondary = SecondPaymentsAudit(data=export_df)
 
-# sp_payments, sp_flagged_trips = secondary.run_secondary_audit()
+# # sp_payments, sp_flagged_trips = secondary.run_secondary_audit()
 
 # sp_payments.to_csv("sp_payments.csv", index=False)
 # sp_flagged_trips.to_csv("sp_flagged.csv", index=False)

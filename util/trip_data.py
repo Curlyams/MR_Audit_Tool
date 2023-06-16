@@ -1,18 +1,49 @@
 import pandas as pd
 import os
+#dict = {"A": "BLANK PROVIDER ", "B": "CANCEL with DISTRIBUTION DATE ", "C": "INCORRECT TD DATE", "D": "DUPLICATE TRIPS" ,  "E": "SINGLE LEG TRIPS", 
+       # "F": "OOA", "G" : "TRIP PURPOSE ERROR", "H": "COMP w CANCEL", "I": "EXCESS APPOINTMENTS"}
 fiscal_summary_cols = [
-    "Client First Name", "Client Last Name", "Customer Number", "Trip ID", "Trip Date",
-    "Trip Status", "Cancel Type", "Verification", "OSA or Negotiated Rate",
-    "Distribution Date", "Pick-up County", "Pick-up Street Number",
-    "Drop-off County", "Drop-off Street Number", "Purpose", "Funding Source",
-    "Fare Distance Rounded Miles", "Transportation Provider", "Provider Rate"
+    "Client First Name",
+    "Client Last Name",
+    "Customer Number",
+    "Trip ID",
+    "Trip Date",
+    "Trip Status",
+    "Cancel Type",
+    "Verification",
+    "OSA or Negotiated Rate",
+    "Distribution Date",
+    "Pick-up County",
+    "Pick-up Street Number",
+    "Drop-off County",
+    "Drop-off Street Number",
+    "Purpose",
+    "Funding Source",
+    "Fare Distance Rounded Miles",
+    "Transportation Provider",
+    "Provider Rate",
 ]
 flagged_cols = [
-    "Flag","Client First Name", "Client Last Name", "Customer Number", "Trip ID", "Trip Date",
-    "Trip Status", "Cancel Type", "Verification", "OSA or Negotiated Rate",
-    "Distribution Date", "Pick-up County", "Pick-up Street Number",
-    "Drop-off County", "Drop-off Street Number", "Purpose", "Funding Source",
-    "Fare Distance Rounded Miles", "Transportation Provider", "Provider Rate"
+    "Flag",
+    "Client First Name",
+    "Client Last Name",
+    "Customer Number",
+    "Trip ID",
+    "Trip Date",
+    "Trip Status",
+    "Cancel Type",
+    "Verification",
+    "OSA or Negotiated Rate",
+    "Distribution Date",
+    "Pick-up County",
+    "Pick-up Street Number",
+    "Drop-off County",
+    "Drop-off Street Number",
+    "Purpose",
+    "Funding Source",
+    "Fare Distance Rounded Miles",
+    "Transportation Provider",
+    "Provider Rate",
 ]
 # List of counties in the area
 tricounty = [
@@ -27,8 +58,8 @@ tricounty = [
 # What to exclude when checking for cancel with distribution date
 exclude_canc_dd = ["None", "", "OK SS", "OK BV"]
 # What to exclude when checking comp with cancel
-exclude_comp_cancel = ['Backdating Mileage','','Not Selected']
-exclude_excess_apps = ['Ride Connection']
+exclude_comp_cancel = ["Backdating Mileage", "", "Not Selected"]
+exclude_excess_apps = ["Ride Connection"]
 # Labels for flagged trips
 
 flag_labels = [
@@ -41,7 +72,8 @@ flag_labels = [
     "TRIP PURPOSE ERROR",
     "COMP with CANCEL",
     "EXCESS APPOINTMENTS",
-    "Duplicate Trips (only within mileage)"
+    "Duplicate Trips (only within mileage)",
+    #"INCORRECT PROVIDER RATE"
 ]
 
 module_dir = os.path.dirname(__file__)
