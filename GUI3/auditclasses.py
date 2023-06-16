@@ -563,7 +563,7 @@ class WeeklyAudit(AuditDataFrame):
 
         self.add_data()
         self.update_rate()
-
+    @classmethod
     def run_weekly_audit(self):
         df = self.in_area_mileage_reimbursement()
 
