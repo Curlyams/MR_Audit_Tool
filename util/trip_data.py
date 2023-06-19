@@ -71,8 +71,8 @@ flag_labels = [
     "OOA",
     "TRIP PURPOSE ERROR",
     "COMP with CANCEL",
-    "EXCESS APPOINTMENTS",
-    "Duplicate Trips (only within mileage)",
+    "EXCESS APPOINTMENTS"
+    #"Duplicate Trips (only within mileage)",
     #"INCORRECT PROVIDER RATE"
 ]
 

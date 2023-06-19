@@ -567,16 +567,18 @@ class WeeklyAudit(AuditDataFrame):
     def run_weekly_audit(self):
         df = self.in_area_mileage_reimbursement()
 
-        flagged_trips = self.get_flagged_trips()
-        flagged_trip_ids = self.get_flagged_trip_ids(flagged_trips)
+        flagged_trip_no_pass = self.get_flagged_trips()
+        flagged_trip_no_pass = self.concat_flagged_trips(flagged_trip_no_pass)
+        flagged_trip_ids = self.get_flagged_trip_ids(flagged_trip_no_pass)
 
 
         fiscal_summary = self.get_fiscal_summary(
              df, flagged_trip_ids
         )
-
+        pass_dups = self.pass_dups_iso()
         taxi_questions = self.taxi_export()
-
+        flags_lst = [flagged_trip_no_pass,pass_dups] 
+        flagged_trips = stack_dfs(flags_lst)
         return fiscal_summary, flagged_trips, taxi_questions
 
     def get_flagged_trips(self):
@@ -594,7 +596,10 @@ class WeeklyAudit(AuditDataFrame):
             #self.incorrect_provider_rate()
         ]
         return flagged_dfs
-    
+    def pass_dups_iso(self):
+        pass_dups = self.pass_duplicate_trips()
+        pass_dups.insert(0,"Flag","Duplicate Trips (only within mileage)")
+        return pass_dups
     def concat_flagged_trips(self,list_of_dfs):
         add_flag_column_to_dataframes(list_of_dfs, flag_labels)
         flagged_trips = stack_dfs(list_of_dfs)

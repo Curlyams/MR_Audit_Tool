@@ -41,7 +41,7 @@ taxi_trips = os.path.join(folder_path, f"{formatted_date} Taxi Questions.csv")
 # Save flagged trips, fiscal summary, and taxi questions to CSV files
 flagged_trips.to_csv(flagged, index=False)
 fiscal_summary.to_csv(payable_trips, index=False)
-# taxi_questions.to_csv(taxi_trips, index=False)
+taxi_questions.to_csv(taxi_trips, index=False)
 
 # # secondary = SecondPaymentsAudit(data=export_df)
 
