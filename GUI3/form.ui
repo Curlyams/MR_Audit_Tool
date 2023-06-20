@@ -998,7 +998,7 @@ QPushButton:pressed {
                 <string notr="true"/>
                </property>
                <property name="currentIndex">
-                <number>5</number>
+                <number>7</number>
                </property>
                <widget class="QWidget" name="page_home">
                 <property name="styleSheet">
@@ -2031,7 +2031,7 @@ QPushButton:pressed {
                     <string notr="true">background:rgb(91,90,90);</string>
                    </property>
                    <property name="currentIndex">
-                    <number>0</number>
+                    <number>2</number>
                    </property>
                    <widget class="QWidget" name="page_android_contact">
                     <property name="styleSheet">
@@ -2903,7 +2903,7 @@ QScrollBar::sub-page:vertical {
                          <enum>Qt::Horizontal</enum>
                         </property>
                        </widget>
-                       <widget class="QLabel" name="label_2">
+                       <widget class="QLabel" name="label_spsettings">
                         <property name="geometry">
                          <rect>
                           <x>8</x>
@@ -2916,6 +2916,9 @@ QScrollBar::sub-page:vertical {
                          <font>
                           <bold>true</bold>
                          </font>
+                        </property>
+                        <property name="frameShape">
+                         <enum>QFrame::Box</enum>
                         </property>
                         <property name="text">
                          <string>Check To Include Secondary Payments</string>
@@ -2966,7 +2969,7 @@ QScrollBar::sub-page:vertical {
                          <string/>
                         </property>
                        </widget>
-                       <widget class="QLineEdit" name="lineEdit">
+                       <widget class="QLineEdit" name="lineEdit_sptripid">
                         <property name="geometry">
                          <rect>
                           <x>10</x>
@@ -2977,6 +2980,94 @@ QScrollBar::sub-page:vertical {
                         </property>
                         <property name="text">
                          <string>Paste Secondary Payment Trip IDs</string>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="output_label">
+                        <property name="geometry">
+                         <rect>
+                          <x>8</x>
+                          <y>200</y>
+                          <width>211</width>
+                          <height>20</height>
+                         </rect>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="frameShape">
+                         <enum>QFrame::Box</enum>
+                        </property>
+                        <property name="text">
+                         <string>Choose What Folders To Output</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                        </property>
+                       </widget>
+                       <widget class="QCheckBox" name="checkBox_alloutputs">
+                        <property name="geometry">
+                         <rect>
+                          <x>10</x>
+                          <y>220</y>
+                          <width>211</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>All Outputs</string>
+                        </property>
+                        <property name="checked">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                       <widget class="QCheckBox" name="checkBox_payableout">
+                        <property name="geometry">
+                         <rect>
+                          <x>10</x>
+                          <y>240</y>
+                          <width>211</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Payable Trips</string>
+                        </property>
+                        <property name="checked">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                       <widget class="QCheckBox" name="checkBox_flagout">
+                        <property name="geometry">
+                         <rect>
+                          <x>10</x>
+                          <y>260</y>
+                          <width>211</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Flagged Trips</string>
+                        </property>
+                        <property name="checked">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                       <widget class="QCheckBox" name="checkBox_taxiout">
+                        <property name="geometry">
+                         <rect>
+                          <x>10</x>
+                          <y>280</y>
+                          <width>211</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Taxi Trips</string>
+                        </property>
+                        <property name="checked">
+                         <bool>true</bool>
                         </property>
                        </widget>
                       </widget>
@@ -3226,7 +3317,7 @@ QScrollBar::sub-page:vertical {
                        <property name="title">
                         <string>Audit Output</string>
                        </property>
-                       <widget class="QLineEdit" name="lineEdit_2">
+                       <widget class="QLineEdit" name="lineEdit_resultOutput_path">
                         <property name="geometry">
                          <rect>
                           <x>10</x>
@@ -3261,7 +3352,7 @@ QScrollBar::sub-page:vertical {
                          <bool>true</bool>
                         </property>
                        </widget>
-                       <widget class="QPushButton" name="pushButton">
+                       <widget class="QPushButton" name="browseButton_output">
                         <property name="geometry">
                          <rect>
                           <x>169</x>
@@ -3700,9 +3791,9 @@ QScrollBar::sub-page:vertical {
    </hints>
   </connection>
   <connection>
-   <sender>pushButton</sender>
+   <sender>browseButton_output</sender>
    <signal>clicked()</signal>
-   <receiver>lineEdit_2</receiver>
+   <receiver>lineEdit_resultOutput_path</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3716,9 +3807,9 @@ QScrollBar::sub-page:vertical {
    </hints>
   </connection>
   <connection>
-   <sender>pushButton</sender>
+   <sender>browseButton_output</sender>
    <signal>clicked()</signal>
-   <receiver>lineEdit_2</receiver>
+   <receiver>lineEdit_resultOutput_path</receiver>
    <slot>paste()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -3760,6 +3851,70 @@ QScrollBar::sub-page:vertical {
     <hint type="destinationlabel">
      <x>298</x>
      <y>420</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_alloutputs</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_payableout</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>339</x>
+     <y>385</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>342</x>
+     <y>404</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_alloutputs</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_flagout</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>358</x>
+     <y>387</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>356</x>
+     <y>427</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_alloutputs</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_taxiout</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>380</x>
+     <y>390</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>386</x>
+     <y>453</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_sptripid</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>lineEdit_sptripid</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>518</x>
+     <y>318</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>510</x>
+     <y>322</y>
     </hint>
    </hints>
   </connection>

@@ -358,9 +358,7 @@ class AuditDataFrame:
         duplicate_trips_non_mileage = duplicate_trips.query(
             "`Transportation Provider`!= 'Reimbursement Mileage'"
         )
-        paid_duplicate_trips = duplicate_trips.query(
-            "`Distribution Date`!= ''"
-        )
+        paid_duplicate_trips = duplicate_trips.query("`Distribution Date`!= ''")
 
         duplicate_trips = duplicate_trips.query(
             "`Transportation Provider` == 'Reimbursement Mileage' and `Distribution Date` == ''"
@@ -437,10 +435,13 @@ class AuditDataFrame:
         df = df.query(
             "`Trip Status Summary` == 'comp etc.' and `Distribution Date` != '' and `Backdating Process` == 'no' and Transportation Provider`== 'Reimbursement Mileage'"
         )
-        df[['Provider Rate', 'Fare Distance Rounded Miles']] = df[['Provider Rate', 'Fare Distance Rounded Miles']].astype(float)
-        df['Correct Rate'] = df['Fare Distance Rounded Miles'] * 0.25
-        df = df[(df['Provider Rate'] != df['Correct Rate'])]
+        df[["Provider Rate", "Fare Distance Rounded Miles"]] = df[
+            ["Provider Rate", "Fare Distance Rounded Miles"]
+        ].astype(float)
+        df["Correct Rate"] = df["Fare Distance Rounded Miles"] * 0.25
+        df = df[(df["Provider Rate"] != df["Correct Rate"])]
         return df
+
     def excessive_trips(self):
         _, df = self.single_leg_trips()
         # df["Mileage Reimbursements"] = df["Mileage Reimbursements"].astype(int)
@@ -557,12 +558,12 @@ class WeeklyAudit(AuditDataFrame):
             cancel_types_df=cancel_types_df,
         )
         # Apply the weekly audit date range and update rate functions
-        self.update_trip_dates()
-        self.iso_weekly_audit_date_range()
-        
+        # self.update_trip_dates()
+        # self.iso_weekly_audit_date_range()
 
-        self.add_data()
-        self.update_rate()
+        # self.add_data()
+        # self.update_rate()
+
     @classmethod
     def run_weekly_audit(self):
         df = self.in_area_mileage_reimbursement()
@@ -570,10 +571,7 @@ class WeeklyAudit(AuditDataFrame):
         flagged_trips = self.get_flagged_trips()
         flagged_trip_ids = self.get_flagged_trip_ids(flagged_trips)
 
-
-        fiscal_summary = self.get_fiscal_summary(
-             df, flagged_trip_ids
-        )
+        fiscal_summary = self.get_fiscal_summary(df, flagged_trip_ids)
 
         taxi_questions = self.taxi_export()
 
@@ -591,12 +589,13 @@ class WeeklyAudit(AuditDataFrame):
             self.comp_with_cancel(),
             self.excessive_trips(),
             # self.pass_duplicate_trips(),
-            #self.incorrect_provider_rate()
+            # self.incorrect_provider_rate()
         ]
         return flagged_dfs
+
     @staticmethod
     def concat_flagged_trips(list_of_dfs):
-        #add_flag_column_to_dataframes(list_of_dfs, flag_labels)
+        # add_flag_column_to_dataframes(list_of_dfs, flag_labels)
         flagged_trips = stack_dfs(list_of_dfs)
         flagged_trips = flagged_trips[flagged_cols]
         return flagged_trips
@@ -604,14 +603,20 @@ class WeeklyAudit(AuditDataFrame):
     def remove_paid_single_trips(self):
         pass_single = self.single_legs_within_one_day()
         all_single_leg_trips = self.single_leg_trips()[0]
-        single_leg_trips = remove_matching_rows(all_single_leg_trips, pass_single, "Trip ID", "Trip ID")
+        single_leg_trips = remove_matching_rows(
+            all_single_leg_trips, pass_single, "Trip ID", "Trip ID"
+        )
         return single_leg_trips
+
     def flagged_duplicate_trips(self):
         pass_dups = self.pass_duplicate_trips()
         all_dups_trips = self.duplicate_trips()
-        dups_trips = remove_matching_rows(all_dups_trips, pass_dups, "Trip ID", "Trip ID")
+        dups_trips = remove_matching_rows(
+            all_dups_trips, pass_dups, "Trip ID", "Trip ID"
+        )
         return dups_trips
-    def get_flagged_trip_ids(self, flagged_trips):
+    @staticmethod
+    def get_flagged_trip_ids(flagged_trips):
         flagged_trip_ids = flagged_trips["Trip ID"].astype(str).tolist()
         return flagged_trip_ids
 
@@ -624,10 +629,8 @@ class WeeklyAudit(AuditDataFrame):
         pass_duplicate_trips = self.pass_duplicate_trips()
         pass_dups_trip_ids = pass_duplicate_trips["Trip ID"].astype(str).tolist()
         return pass_dups_trip_ids
-
-    def get_fiscal_summary(
-        self, df, flagged_trip_ids):
-
+    @staticmethod
+    def get_fiscal_summary( df, flagged_trip_ids):
         fiscal_summary = df[~df["Trip ID"].astype(str).isin(flagged_trip_ids)]
         fiscal_summary = fiscal_summary[fiscal_summary_cols]
         return fiscal_summary
@@ -708,3 +711,15 @@ class SecondPaymentsAudit(AuditDataFrame):
         self.drop_columns(sp_fiscal_summary)
 
         return sp_fiscal_summary, sp_flagged_trips
+    @staticmethod
+    def get_sp_fiscal_summary(fiscal_summary,sp_trip_id):
+        sp_fiscal_summary = fiscal_summary.query("`Trip ID` in @sp_trip_id")
+        sp_fiscal_summary = sp_fiscal_summary[fiscal_summary_cols]
+        return sp_fiscal_summary
+    @staticmethod
+    def get_sp_flagged_trips(flagged_trips, sp_trip_id):
+        sp_flagged_trips = flagged_trips.query("`Trip ID` in @sp_trip_id")
+        sp_flagged_trips = sp_flagged_trips[flagged_cols]
+        return sp_flagged_trips
+
+        
