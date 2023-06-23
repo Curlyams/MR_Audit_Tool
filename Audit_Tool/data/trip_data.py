@@ -75,10 +75,22 @@ flag_labels = [
     "Duplicate Trips (only within mileage)"
 ]
 
-module_dir = os.path.dirname(__file__)
+# module_dir = os.path.dirname(__file__)
+# modes_path = os.path.join(module_dir, "modes.csv")
+# service_areas_path = os.path.join(module_dir, "service_areas.csv")
+# purpose_summary_path = os.path.join(module_dir, "purpose_summary.csv")
+import sys
+
+
+if getattr(sys, 'frozen', False):
+    module_dir = sys._MEIPASS
+else:
+    module_dir = os.path.dirname(os.path.abspath(__file__))
+
 modes_path = os.path.join(module_dir, "modes.csv")
 service_areas_path = os.path.join(module_dir, "service_areas.csv")
 purpose_summary_path = os.path.join(module_dir, "purpose_summary.csv")
+
 
 
 # Function to load data from csv files used for xlookup function

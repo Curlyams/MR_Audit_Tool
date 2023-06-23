@@ -2,44 +2,16 @@
 import sys
 from PySide6 import QtCore, QtGui, QtWidgets
 from PySide6.QtCore import (
-    QCoreApplication,
     QPropertyAnimation,
-    QDate,
-    QDateTime,
-    QMetaObject,
-    QObject,
-    QPoint,
-    QRect,
-    QSize,
-    QTime,
-    QUrl,
-    Qt,
-    QEvent,
+    Qt
 )
-from PySide6.QtGui import (
-    QBrush,
-    QColor,
-    QConicalGradient,
-    QCursor,
-    QFont,
-    QFontDatabase,
-    QIcon,
-    QKeySequence,
-    QLinearGradient,
-    QPalette,
-    QPainter,
-    QPixmap,
-    QRadialGradient,
-)
+
 from PySide6.QtWidgets import *
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
-#     pyside6-uic form.ui -o ui_form.py, or
-#     pyside2-uic form.ui -o ui_form.py
+#     pyside6-uic form.ui -o ui_form.py
 from ui.ui_form import Ui_MainWindow
-from ui.ui_dialog_ui import Ui_Dialog
-from ui.ui_error_ui import Ui_Error
 
 # from ui_function import UIFunction
 from util.about import *
@@ -47,7 +19,9 @@ from util.auditclasses import *
 import data.gui_data as gd
 from util.df_functions import *
 
-
+#ignores the warning from the mismatched rgb profile of the rideconnection image
+import os
+os.environ['QT_LOGGING_RULES'] = 'qt.gui.imageio=false'
 
 
 from PySide6.QtCore import QThread, Signal
@@ -492,8 +466,6 @@ GLOBAL_TITLE_BAR = (
 )
 init = False  # NECRESSERY FOR INITITTION OF THE WINDOW.
 
-# tab_Buttons = ['bn_home', 'bn_bug', 'bn_android', 'bn_cloud'] #BUTTONS IN MAIN TAB
-# android_buttons = ['bn_android_contact', 'bn_android_game', 'bn_android_clean', 'bn_android_world'] #BUTTONS IN ANDROID STACKPAGE
 
 
 # THIS CLASS HOUSES ALL FUNCTION NECESSERY FOR OUR PROGRAMME TO RUN.
@@ -690,14 +662,9 @@ class UIFunction(MainWindow):
     # WHAT EVER WIDGET IS IN THE STACKED PAGES ITS ACTION IS EVALUATED HERE AND THEN THE REST FUNCTION IS PASSED.
     def stackPage(self):
         ######### PAGE_HOME ############# BELOW DISPLAYS THE FUNCTION OF WIDGET, LABEL, PROGRESS BAR, E.T.C IN STACKEDWIDGET page_HOME
-        self.ui.lab_home_main_hed.setText("Profile")
-        self.ui.lab_home_stat_hed.setText("Stat")
+        self.ui.lab_about_audit.setText("Audit Instructions")
+        self.ui.lab_about_settings.setText("Settings Instructions")
 
-        ######### PAGE_BUG ############## BELOW DISPLAYS THE FUNCTION OF WIDGET, LABEL, PROGRESS BAR, E.T.C IN STACKEDWIDGET page_bug
-        # self.ui.bn_audit_start.clicked.connect(lambda: APFunction.addNumbers(self, 100000, True))
-
-        # THIS CALLS A SIMPLE FUNCTION LOOPS THROW THE NUMBER FORWARDED BY THE COMBOBOX 'comboBox_bug' AND DISPLAY IN PROGRESS BAR
-        # ALONGWITH MOVING THE PROGRESS CHUNK FROM 0 TO 100%
 
         self.ui.bn_settings_clean.clicked.connect(
             lambda: UIFunction.settingsStackPages(self, "page_clean")
@@ -706,16 +673,6 @@ class UIFunction(MainWindow):
             lambda: UIFunction.settingsStackPages(self, "page_world")
         )
 
-        ######ANDROID > PAGE CONTACT >>>>>>>>>>>>>>>>>>>>
-        self.ui.bn_android_contact_delete.clicked.connect(
-            lambda: self.dialogexec(
-                "Warning",
-                "The Contact Infromtion will be Deleted, Do you want to continue.",
-                "icons/1x/errorAsset 55.png",
-                "Cancel",
-                "Yes",
-            )
-        )
 
         self.ui.bn_android_contact_edit.clicked.connect(
             lambda: APFunction.editable(self)
@@ -728,10 +685,16 @@ class UIFunction(MainWindow):
         ##########PAGE: ABOUT HOME #############
         self.ui.text_about_home.setVerticalScrollBar(self.ui.vsb_about_home)
         self.ui.text_about_home.setText(aboutHome)
+        
+        self.ui.text_about_audit.setVerticalScrollBar(self.ui.vsb_about_audit)
+        self.ui.text_about_audit.setText(aboutAudit)
+        self.ui.text_about_settings.setVerticalScrollBar(self.ui.vsb_about_settings)
+        self.ui.text_about_settings.setText(aboutSettings)
+  
 
     ################################################################################################################################
 
-    # -----> FUNCTION TO SHOW CORRESPONDING STACK PAGE WHEN THE ANDROID BUTTONS ARE PRESSED: CONTACT, GAME, CLOUD, WORLD
+    # -----> FUNCTION TO SHOW CORRESPONDING STACK PAGE WHEN THE ANDROID BUTTONS ARE PRESSED
     # SINCE THE ANDROID PAGE AHS A SUB STACKED WIDGET WIT FOUR MORE BUTTONS, ALL THIS 4 PAGES CONTENT: BUTTONS, TEXT, LABEL E.T.C ARE INITIALIED OVER HERE.
     def settingsStackPages(self, page):
         # ------> THIS LINE CLEARS THE BG COLOR OF PREVIOUS TABS
@@ -740,12 +703,12 @@ class UIFunction(MainWindow):
 
         if page == "page_clean":
             self.ui.stackedWidget_settings.setCurrentWidget(self.ui.page_settings_clean)
-            self.ui.lab_tab.setText("Android > Clean")
+            self.ui.lab_tab.setText("Settings > Outputs")
             self.ui.frame_settings_clean.setStyleSheet("background:rgb(91,90,90)")
 
         elif page == "page_world":
             self.ui.stackedWidget_settings.setCurrentWidget(self.ui.page_android_world)
-            self.ui.lab_tab.setText("Android > World")
+            self.ui.lab_tab.setText("Settings > Info")
             self.ui.frame_settings_world.setStyleSheet("background:rgb(91,90,90)")
 
         # ADD A ADDITIONAL ELIF STATEMNT WITH THE SIMILAR CODE UP ABOVE FOR YOUR NEW SUBMENU BUTTON IN THE ANDROID STACK PAGE.
