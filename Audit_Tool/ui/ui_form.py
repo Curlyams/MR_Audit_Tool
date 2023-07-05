@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'form.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.5.1
+## Created by: Qt User Interface Compiler version 6.5.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -567,8 +567,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_28.addWidget(self.vsb_about_home)
 
-        self.text_about_home.raise_()
-        self.vsb_about_home.raise_()
 
         self.verticalLayout_13.addWidget(self.frame_about_home)
 
@@ -1641,9 +1639,8 @@ class Ui_MainWindow(object):
         self.checkBox_alloutputs.toggled.connect(self.checkBox_payableout.setChecked)
         self.checkBox_alloutputs.toggled.connect(self.checkBox_flagout.setChecked)
         self.checkBox_alloutputs.toggled.connect(self.checkBox_taxiout.setChecked)
-        self.lineEdit_sptripid.textEdited.connect(self.lineEdit_sptripid.clear)
 
-        self.stackedWidget.setCurrentIndex(5)
+        self.stackedWidget.setCurrentIndex(7)
         self.stackedWidget_settings.setCurrentIndex(2)
 
 

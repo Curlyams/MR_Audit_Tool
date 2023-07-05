@@ -4,6 +4,7 @@ from datetime import datetime, timedelta, date
 import xlrd
 from data.trip_data import *
 from util.df_functions import *
+from dateutil.parser import parse
 import warnings
 
 
@@ -451,6 +452,8 @@ class AuditDataFrame:
         return excessive_trips
 
     # Function to identify single legs within one day
+
+
     def single_legs_within_one_day(self):
         # Ignoring the warning for the future removal of the append method in pandas
         # If a newer version of pandas is installed, use the concat method instead will require a rework of this function
@@ -473,8 +476,8 @@ class AuditDataFrame:
                 ):
                     prev_row = row
                 else:
-                    current_date = datetime.strptime(row["Trip Date"], "%m/%d/%Y")
-                    prev_date = datetime.strptime(prev_row["Trip Date"], "%m/%d/%Y")
+                    current_date = parse(row["Trip Date"])
+                    prev_date = parse(prev_row["Trip Date"])
                     date_difference = (current_date - prev_date).days
 
                     # Check if the date difference is within one day and the drop-off and pick-up street numbers match
@@ -496,6 +499,7 @@ class AuditDataFrame:
                     prev_row = row
 
             return single_legs_within_one_day_df
+
 
     # Function to export taxi-related data
     def taxi_export(self):

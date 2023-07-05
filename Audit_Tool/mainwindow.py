@@ -128,8 +128,11 @@ class WeeklyAuditWorker(QThread):
             self.error.emit("Be sure to select at least one flag in the settings.")
         # Adds the flag column to the result dataframe
         for selected_function, flag in zip(selected_functions, flags):
-            function_object = getattr(self.class_object, selected_function)
-            result = function_object()
+            try:
+                function_object = getattr(self.class_object, selected_function)
+                result = function_object()
+            except Exception as e:
+                self.error.emit(str(e))
             try:
                 if not result.empty:
                     result.insert(0, "Flag", flag)
@@ -270,10 +273,12 @@ class MainWindow(QMainWindow):
 
     def handle_text_changed(self, text):
         # process the pasted text as a list
-        values_list = text.split(",")  # split by comma
+        values_list = text.split("\n")  # split by newline
 
         # Remove leading/trailing whitespace from each value
         values_list = [value.strip() for value in values_list]
+        # Filter out empty values
+        values_list = [value for value in values_list if value]
         return values_list
     def select_output_path(self):
         #open a file dialog and get the selected path
@@ -406,7 +411,8 @@ class MainWindow(QMainWindow):
         # Determine the type of audit to run based on the checks in the interface
         if not (self.onlysec_audit.isChecked() or self.secweek_audit.isChecked()):
             # If no specific audit type is checked, run a standard Weekly Audit
-            flagged_trip_id = WeeklyAudit.get_flagged_trip_ids(self.flagged_trips)
+            flag_no_pass_dups = self.flagged_trips.query("`Flag` != 'Duplicate Trips (only within mileage)'")
+            flagged_trip_id = WeeklyAudit.get_flagged_trip_ids(flag_no_pass_dups)
             fiscal_summary = WeeklyAudit.get_fiscal_summary(self.payable_trips, flagged_trip_id)
         elif self.onlysec_audit.isChecked():
             # If only secondary audit is checked, run a Secondary Payments Audit
