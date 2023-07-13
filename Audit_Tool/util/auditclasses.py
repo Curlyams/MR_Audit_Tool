@@ -152,6 +152,7 @@ class AuditDataFrame:
             return formatted_date
 
     # Function to return a weekly audit date range
+    
     def get_weekly_audit_date_range(self):
         delta = timedelta(days=67)
         today = datetime.today()
@@ -243,9 +244,9 @@ class AuditDataFrame:
         # date_range_change_58 = datetime.strptime("06/30/2022", "%m/%d/%Y")
         # rate_change_start = datetime.strptime("01/01/2022", "%m/%d/%Y")
         raw_date_range_65 = datetime.strptime("06/01/2023", "%m/%d/%Y")
-        date_rate_change_65 = raw_date_range_65.strftime("%m/%d/%Y")
+        date_rate_change_65 = raw_date_range_65 #.strftime("%m/%d/%Y")
 
-        # self.df["Trip Date"] = pd.to_datetime(self.df["Trip Date"], format="%m/%d/%Y")
+        self.df["Trip Date"] = pd.to_datetime(self.df["Trip Date"], format="%m/%d/%Y")
 
         reimbursement_mileage = (
             self.df["Transportation Provider"] == "Reimbursement Mileage"
@@ -717,12 +718,12 @@ class SecondPaymentsAudit(AuditDataFrame):
         return sp_fiscal_summary, sp_flagged_trips
     @staticmethod
     def get_sp_fiscal_summary(fiscal_summary,sp_trip_id):
-        sp_fiscal_summary = fiscal_summary.query("`Trip ID` in @sp_trip_id")
+        sp_fiscal_summary = fiscal_summary[fiscal_summary["Trip ID"].astype(str).isin(sp_trip_id)]
         sp_fiscal_summary = sp_fiscal_summary[fiscal_summary_cols]
         return sp_fiscal_summary
     @staticmethod
     def get_sp_flagged_trips(flagged_trips, sp_trip_id):
-        sp_flagged_trips = flagged_trips.query("`Trip ID` in @sp_trip_id")
+        sp_flagged_trips = flagged_trips[flagged_trips["Trip ID"].astype(str).isin(sp_trip_id)]
         sp_flagged_trips = sp_flagged_trips[flagged_cols]
         return sp_flagged_trips
 
