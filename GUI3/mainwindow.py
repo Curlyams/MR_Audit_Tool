@@ -128,12 +128,12 @@ class WeeklyAuditWorker(QThread):
         payable_df = self.class_object.in_area_mileage_reimbursement()
         progress += step_size
         self.progressUpdated.emit(int(progress))
-
+        
         # Step 7: taxi_export
         taxi_df = self.class_object.taxi_export()
         progress += step_size
         self.progressUpdated.emit(int(progress))
-
+        
         # Step 8: Processing selected functions
         selected_functions = []
         flags = []
@@ -148,7 +148,7 @@ class WeeklyAuditWorker(QThread):
 
         total = len(selected_functions)
         flag_lst = []
-
+        print(flags, selected_functions)
         for selected_function, flag in zip(selected_functions, flags):
             function_object = getattr(self.class_object, selected_function)
             result = function_object()
@@ -459,10 +459,13 @@ class MainWindow(QMainWindow):
         # Determine the base output path, defaulting to the desktop
         if self.button_was_clicked:
             base_path = self.ui.lineEdit_resultOutput_path.text()
+            if base_path == "":
+                base_path = os.path.join(os.path.expanduser("~"), "Desktop")
         else:
             base_path = os.path.join(os.path.expanduser("~"), "Desktop")
 
         # Create the output folder
+
         folder_path = os.path.join(base_path, folder_name)
         os.makedirs(folder_path, exist_ok=True)
 
@@ -718,9 +721,13 @@ class UIFunction(MainWindow):
         )
 
         ##########PAGE: ABOUT HOME #############
+        ##########PAGE: ABOUT HOME #############
         self.ui.text_about_home.setVerticalScrollBar(self.ui.vsb_about_home)
         self.ui.text_about_home.setText(aboutHome)
-
+        self.ui.text_about_audit.setVerticalScrollBar(self.ui.vsb_about_audit)
+        self.ui.text_about_audit.setText(aboutAudit)
+        #self.ui.text_about_settings.setVerticalScrollBar(self.ui.vsb_about_settings)
+        self.ui.text_about_settings.setText(aboutSettings)
     ################################################################################################################################
 
     # -----> FUNCTION TO SHOW CORRESPONDING STACK PAGE WHEN THE ANDROID BUTTONS ARE PRESSED: CONTACT, GAME, CLOUD, WORLD

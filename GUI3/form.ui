@@ -1070,7 +1070,7 @@ QPushButton:pressed {
 }</string>
                       </property>
                       <property name="text">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Instructions&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Overview&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                       </property>
                       <property name="textFormat">
                        <enum>Qt::RichText</enum>
@@ -1096,7 +1096,17 @@ hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Will put instructions&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;This tool is used perform the weekly audit for Mileage Reimbursement. &lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;To navigate use the tool bar on the left side.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The toggle button on the top left is used to give instructions for each tab. &lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The top button is the home button. Here you will find the overview as well as the instructions for downloading the export. &lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The middle button is where you will go to perform the actual audit. &lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The last button is the settings window. Go here to customize the outputs. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -1181,7 +1191,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 }</string>
                       </property>
                       <property name="text">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Extra Info&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Support Contacts&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1196,8 +1206,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
                         <pointsize>10</pointsize>
                        </font>
                       </property>
+                      <property name="styleSheet">
+                       <string notr="true">
+  color: white;
+
+</string>
+                      </property>
                       <property name="text">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Boop bop do do do &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;Jordan Bailey: jbailey@rideconnection.org&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;RJ Miller: rmiller@rideconnection.org&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;Chris Simpson: csimpson@rideconnection.org&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -1253,7 +1269,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                     <string notr="true">color:rgb(255,255,255);</string>
                    </property>
                    <property name="text">
-                    <string>About: Home</string>
+                    <string>Set-Up Instructions</string>
                    </property>
                   </widget>
                  </item>
@@ -1318,7 +1334,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     margin: 0px 0px 0px 0px;
 }
 QScrollBar::handle:vertical {
-    background:rgb(0,143,170);
+    background-color:rgb(213, 224, 78);
 }
 QScrollBar::add-page:vertical {
  	background:rgb(51,51,51);
@@ -1367,11 +1383,250 @@ QScrollBar::sub-page:vertical {
                 <property name="styleSheet">
                  <string notr="true">background:rgb(91,90,90);</string>
                 </property>
+                <widget class="QFrame" name="frame_about_settings">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>60</y>
+                   <width>631</width>
+                   <height>401</height>
+                  </rect>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_31">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>5</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>5</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>5</number>
+                  </property>
+                  <item>
+                   <widget class="QTextEdit" name="text_about_settings">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Segoe UI</family>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">color:rgb(255,255,255);</string>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Plain</enum>
+                    </property>
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                    <property name="textInteractionFlags">
+                     <set>Qt::TextBrowserInteraction</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QScrollBar" name="vsb_about_settings">
+                    <property name="styleSheet">
+                     <string notr="true">QScrollBar:vertical {
+	background:rgb(51,51,51);
+    width:20px;
+    margin: 0px 0px 0px 0px;
+}
+QScrollBar::handle:vertical {
+    background-color:rgb(213, 224, 78);
+}
+QScrollBar::add-page:vertical {
+ 	background:rgb(51,51,51);
+}
+QScrollBar::sub-page:vertical {
+ 	background:rgb(51,51,51);
+}</string>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+                <widget class="QLabel" name="lab_about_settings">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>710</width>
+                   <height>55</height>
+                  </rect>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>55</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>55</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Segoe UI</family>
+                   <pointsize>24</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color:rgb(255,255,255);</string>
+                 </property>
+                 <property name="text">
+                  <string>Set-Up Instructions</string>
+                 </property>
+                </widget>
                </widget>
                <widget class="QWidget" name="page_about_audit">
                 <property name="styleSheet">
                  <string notr="true">background:rgb(91,90,90);</string>
                 </property>
+                <widget class="QFrame" name="frame_about_audit">
+                 <property name="geometry">
+                  <rect>
+                   <x>10</x>
+                   <y>60</y>
+                   <width>621</width>
+                   <height>401</height>
+                  </rect>
+                 </property>
+                 <property name="whatsThis">
+                  <string/>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_30">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>5</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>5</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>5</number>
+                  </property>
+                  <item>
+                   <widget class="QTextEdit" name="text_about_audit">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Segoe UI</family>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">color:rgb(255,255,255);</string>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Plain</enum>
+                    </property>
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                    <property name="textInteractionFlags">
+                     <set>Qt::TextBrowserInteraction</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QScrollBar" name="vsb_about_audit">
+                    <property name="styleSheet">
+                     <string notr="true">QScrollBar:vertical {
+	background:rgb(51,51,51);
+    width:20px;
+    margin: 0px 0px 0px 0px;
+}
+QScrollBar::handle:vertical {
+   background-color:rgb(213, 224, 78);
+}
+QScrollBar::add-page:vertical {
+ 	background:rgb(51,51,51);
+}
+QScrollBar::sub-page:vertical {
+ 	background:rgb(51,51,51);
+}</string>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+                <widget class="QLabel" name="lab_about_audit">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>710</width>
+                   <height>55</height>
+                  </rect>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>55</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>55</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Segoe UI</family>
+                   <pointsize>24</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color:rgb(255,255,255);</string>
+                 </property>
+                 <property name="text">
+                  <string>Set-Up Instructions</string>
+                 </property>
+                </widget>
                </widget>
                <widget class="QWidget" name="page_audit">
                 <property name="styleSheet">
@@ -1445,38 +1700,6 @@ QScrollBar::sub-page:vertical {
                     <enum>QFrame::Plain</enum>
                    </property>
                    <layout class="QGridLayout" name="gridLayout">
-                    <item row="1" column="0">
-                     <widget class="QLabel" name="lab_bullet2">
-                      <property name="maximumSize">
-                       <size>
-                        <width>5</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                      <property name="pixmap">
-                       <pixmap>icons/1x/bulletAsset 54.png</pixmap>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="1">
-                     <widget class="QLabel" name="lab_audit2">
-                      <property name="font">
-                       <font>
-                        <family>Segoe UI</family>
-                        <pointsize>14</pointsize>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">color:rgb(255,255,255);</string>
-                      </property>
-                      <property name="text">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Make sure appropriate settings are set&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                      </property>
-                     </widget>
-                    </item>
                     <item row="0" column="0">
                      <widget class="QLabel" name="lab_bullet">
                       <property name="maximumSize">
@@ -1496,54 +1719,43 @@ QScrollBar::sub-page:vertical {
                       </property>
                      </widget>
                     </item>
-                    <item row="4" column="1">
-                     <widget class="QLineEdit" name="export_path">
-                      <property name="text">
-                       <string>Input Ecolane Export Path</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="3" column="5" colspan="2">
-                     <widget class="QLabel" name="lab_audit_action">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>30</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Segoe UI</family>
-                        <pointsize>16</pointsize>
-                       </font>
+                    <item row="4" column="5" colspan="3">
+                     <widget class="QProgressBar" name="progressBar_audit">
+                      <property name="enabled">
+                       <bool>true</bool>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">color:rgb(255,255,255);</string>
+                       <string notr="true">QProgressBar
+{
+	color:rgb(255,255,255);
+	background-color :rgb(51,51,51);
+	border : 2px;
+	border-radius:4px;
+}
+
+QProgressBar::chunk{
+	border : 2px;
+	border-radius:4px;
+	background-color:rgb(213, 224, 78);
+}</string>
                       </property>
-                      <property name="text">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Push to Perform Audit:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      <property name="value">
+                       <number>0</number>
                       </property>
                       <property name="alignment">
-                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                       <set>Qt::AlignCenter</set>
                       </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="1" colspan="4">
-                     <widget class="QLabel" name="lab_audit3">
-                      <property name="font">
-                       <font>
-                        <family>Segoe UI</family>
-                        <pointsize>14</pointsize>
-                       </font>
+                      <property name="textVisible">
+                       <bool>true</bool>
                       </property>
-                      <property name="text">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;Make sure the file is a .csv or .xlsx &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="invertedAppearance">
+                       <bool>false</bool>
+                      </property>
+                      <property name="textDirection">
+                       <enum>QProgressBar::TopToBottom</enum>
                       </property>
                      </widget>
                     </item>
@@ -1553,79 +1765,6 @@ QScrollBar::sub-page:vertical {
                        <string>Browse</string>
                       </property>
                      </widget>
-                    </item>
-                    <item row="5" column="5" colspan="3">
-                     <spacer name="horizontalSpacer">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>421</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="lab_bullet3">
-                      <property name="maximumSize">
-                       <size>
-                        <width>5</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                      <property name="pixmap">
-                       <pixmap>icons/1x/bulletAsset 54.png</pixmap>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="1">
-                     <widget class="QLabel" name="lab_audit1">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>0</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <family>Segoe UI</family>
-                        <pointsize>14</pointsize>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">color:rgb(255,255,255);</string>
-                      </property>
-                      <property name="text">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Select Ecolane Export Path&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="5" column="1">
-                     <spacer name="horizontalSpacer_2">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>40</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
                     </item>
                     <item row="3" column="7">
                      <widget class="QPushButton" name="bn_audit_start">
@@ -1680,43 +1819,159 @@ QPushButton:disabled {
                       </property>
                      </widget>
                     </item>
-                    <item row="4" column="5" colspan="3">
-                     <widget class="QProgressBar" name="progressBar_audit">
-                      <property name="enabled">
-                       <bool>true</bool>
+                    <item row="1" column="1">
+                     <widget class="QLabel" name="lab_audit2">
+                      <property name="font">
+                       <font>
+                        <family>Segoe UI</family>
+                        <pointsize>14</pointsize>
+                       </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QProgressBar
-{
-	color:rgb(255,255,255);
-	background-color :rgb(51,51,51);
-	border : 2px;
-	border-radius:4px;
-}
-
-QProgressBar::chunk{
-	border : 2px;
-	border-radius:4px;
-	background-color:rgb(213, 224, 78);
-}</string>
+                       <string notr="true">color:rgb(255,255,255);</string>
                       </property>
-                      <property name="value">
-                       <number>0</number>
+                      <property name="text">
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Make sure appropriate settings are set&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                       </property>
-                      <property name="alignment">
-                       <set>Qt::AlignCenter</set>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="lab_bullet2">
+                      <property name="maximumSize">
+                       <size>
+                        <width>5</width>
+                        <height>16777215</height>
+                       </size>
                       </property>
-                      <property name="textVisible">
-                       <bool>true</bool>
+                      <property name="text">
+                       <string/>
                       </property>
+                      <property name="pixmap">
+                       <pixmap>icons/1x/bulletAsset 54.png</pixmap>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="lab_bullet3">
+                      <property name="maximumSize">
+                       <size>
+                        <width>5</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="pixmap">
+                       <pixmap>icons/1x/bulletAsset 54.png</pixmap>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="4" column="1">
+                     <widget class="QLineEdit" name="export_path">
+                      <property name="text">
+                       <string>Input Ecolane Export Path</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QLabel" name="lab_audit3">
+                      <property name="font">
+                       <font>
+                        <family>Segoe UI</family>
+                        <pointsize>14</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;Make sure the Export file is CSV &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="5" column="1">
+                     <spacer name="horizontalSpacer_2">
                       <property name="orientation">
                        <enum>Qt::Horizontal</enum>
                       </property>
-                      <property name="invertedAppearance">
-                       <bool>false</bool>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
                       </property>
-                      <property name="textDirection">
-                       <enum>QProgressBar::TopToBottom</enum>
+                     </spacer>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QLabel" name="lab_audit1">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Segoe UI</family>
+                        <pointsize>14</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">color:rgb(255,255,255);</string>
+                      </property>
+                      <property name="text">
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Select Ecolane Export Path&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="6" column="5" colspan="3">
+                     <spacer name="horizontalSpacer">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>421</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item row="3" column="5">
+                     <widget class="QLabel" name="lab_audit_action">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Segoe UI</family>
+                        <pointsize>16</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">color:rgb(255,255,255);</string>
+                      </property>
+                      <property name="text">
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;Push to Perform Audit:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                       </property>
                      </widget>
                     </item>
@@ -2028,7 +2283,8 @@ QPushButton:pressed {
                  <item>
                   <widget class="QStackedWidget" name="stackedWidget_settings">
                    <property name="styleSheet">
-                    <string notr="true">background:rgb(91,90,90);</string>
+                    <string notr="true">background:rgb(91,90,90);
+color: white;</string>
                    </property>
                    <property name="currentIndex">
                     <number>2</number>
@@ -3386,7 +3642,7 @@ QScrollBar::sub-page:vertical {
                         <string notr="true">color:rgb(255,255,255);</string>
                        </property>
                        <property name="text">
-                        <string>VACANT? TRY YOUR IMAGINATION</string>
+                        <string>: )</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignCenter</set>
@@ -3829,12 +4085,12 @@ QScrollBar::sub-page:vertical {
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>443</x>
-     <y>419</y>
+     <x>129</x>
+     <y>232</y>
     </hint>
     <hint type="destinationlabel">
-     <x>297</x>
-     <y>418</y>
+     <x>113</x>
+     <y>232</y>
     </hint>
    </hints>
   </connection>
@@ -3845,12 +4101,12 @@ QScrollBar::sub-page:vertical {
    <slot>paste()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>451</x>
-     <y>412</y>
+     <x>129</x>
+     <y>232</y>
     </hint>
     <hint type="destinationlabel">
-     <x>298</x>
-     <y>420</y>
+     <x>113</x>
+     <y>232</y>
     </hint>
    </hints>
   </connection>
@@ -3899,22 +4155,6 @@ QScrollBar::sub-page:vertical {
     <hint type="destinationlabel">
      <x>386</x>
      <y>453</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lineEdit_sptripid</sender>
-   <signal>textEdited(QString)</signal>
-   <receiver>lineEdit_sptripid</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>518</x>
-     <y>318</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>510</x>
-     <y>322</y>
     </hint>
    </hints>
   </connection>

@@ -1,3 +1,11 @@
 __pycache__/
 old_versions/
 ModeSheets/
+**/__pycache__/
+GUI3/
+util/
+runaudit.py/
+**/tool/
+pyinstaller_line.txt/
+GUI3/
+util/

@@ -8,7 +8,7 @@ flag_checkboxes_names = [
     "checkBox_trippurp",
     "checkBox_compwcan",
     "checkBox_excapps",
-    "checkBox_paiddups",
+    "checkBox_paiddups"
 ]
 
 function_names = [
@@ -21,5 +21,5 @@ function_names = [
     "trip_purpose_error",
     "comp_with_cancel",
     "excessive_trips",
-    "pass_duplicate_trips",
+    "pass_duplicate_trips"
 ]

@@ -72,8 +72,7 @@ flag_labels = [
     "TRIP PURPOSE ERROR",
     "COMP with CANCEL",
     "EXCESS APPOINTMENTS",
-    "Duplicate Trips (only within mileage)",
-    #"INCORRECT PROVIDER RATE"
+    "Duplicate Trips (only within mileage)"
 ]
 
 module_dir = os.path.dirname(__file__)

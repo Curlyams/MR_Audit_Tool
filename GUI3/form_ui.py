@@ -496,6 +496,10 @@ class Ui_MainWindow(object):
         self.lab_home_stat_disc = QLabel(self.frame_home_stat)
         self.lab_home_stat_disc.setObjectName(u"lab_home_stat_disc")
         self.lab_home_stat_disc.setFont(font2)
+        self.lab_home_stat_disc.setStyleSheet(u"\n"
+"  color: white;\n"
+"\n"
+"")
         self.lab_home_stat_disc.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
 
         self.verticalLayout_6.addWidget(self.lab_home_stat_disc)
@@ -551,7 +555,7 @@ class Ui_MainWindow(object):
 "    margin: 0px 0px 0px 0px;\n"
 "}\n"
 "QScrollBar::handle:vertical {\n"
-"    background:rgb(0,143,170);\n"
+"    background-color:rgb(213, 224, 78);\n"
 "}\n"
 "QScrollBar::add-page:vertical {\n"
 " 	background:rgb(51,51,51);\n"
@@ -563,6 +567,8 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_28.addWidget(self.vsb_about_home)
 
+        self.text_about_home.raise_()
+        self.vsb_about_home.raise_()
 
         self.verticalLayout_13.addWidget(self.frame_about_home)
 
@@ -587,10 +593,106 @@ class Ui_MainWindow(object):
         self.page_about_settings = QWidget()
         self.page_about_settings.setObjectName(u"page_about_settings")
         self.page_about_settings.setStyleSheet(u"background:rgb(91,90,90);")
+        self.frame_about_settings = QFrame(self.page_about_settings)
+        self.frame_about_settings.setObjectName(u"frame_about_settings")
+        self.frame_about_settings.setGeometry(QRect(0, 60, 631, 401))
+        self.frame_about_settings.setFrameShape(QFrame.StyledPanel)
+        self.frame_about_settings.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_31 = QHBoxLayout(self.frame_about_settings)
+        self.horizontalLayout_31.setSpacing(0)
+        self.horizontalLayout_31.setObjectName(u"horizontalLayout_31")
+        self.horizontalLayout_31.setContentsMargins(5, 5, 0, 5)
+        self.text_about_settings = QTextEdit(self.frame_about_settings)
+        self.text_about_settings.setObjectName(u"text_about_settings")
+        self.text_about_settings.setEnabled(True)
+        self.text_about_settings.setFont(font2)
+        self.text_about_settings.setStyleSheet(u"color:rgb(255,255,255);")
+        self.text_about_settings.setFrameShape(QFrame.NoFrame)
+        self.text_about_settings.setFrameShadow(QFrame.Plain)
+        self.text_about_settings.setReadOnly(True)
+        self.text_about_settings.setTextInteractionFlags(Qt.TextBrowserInteraction)
+
+        self.horizontalLayout_31.addWidget(self.text_about_settings)
+
+        self.vsb_about_settings = QScrollBar(self.frame_about_settings)
+        self.vsb_about_settings.setObjectName(u"vsb_about_settings")
+        self.vsb_about_settings.setStyleSheet(u"QScrollBar:vertical {\n"
+"	background:rgb(51,51,51);\n"
+"    width:20px;\n"
+"    margin: 0px 0px 0px 0px;\n"
+"}\n"
+"QScrollBar::handle:vertical {\n"
+"    background-color:rgb(213, 224, 78);\n"
+"}\n"
+"QScrollBar::add-page:vertical {\n"
+" 	background:rgb(51,51,51);\n"
+"}\n"
+"QScrollBar::sub-page:vertical {\n"
+" 	background:rgb(51,51,51);\n"
+"}")
+        self.vsb_about_settings.setOrientation(Qt.Vertical)
+
+        self.horizontalLayout_31.addWidget(self.vsb_about_settings)
+
+        self.lab_about_settings = QLabel(self.page_about_settings)
+        self.lab_about_settings.setObjectName(u"lab_about_settings")
+        self.lab_about_settings.setGeometry(QRect(0, 0, 710, 55))
+        self.lab_about_settings.setMinimumSize(QSize(0, 55))
+        self.lab_about_settings.setMaximumSize(QSize(16777215, 55))
+        self.lab_about_settings.setFont(font3)
+        self.lab_about_settings.setStyleSheet(u"color:rgb(255,255,255);")
         self.stackedWidget.addWidget(self.page_about_settings)
         self.page_about_audit = QWidget()
         self.page_about_audit.setObjectName(u"page_about_audit")
         self.page_about_audit.setStyleSheet(u"background:rgb(91,90,90);")
+        self.frame_about_audit = QFrame(self.page_about_audit)
+        self.frame_about_audit.setObjectName(u"frame_about_audit")
+        self.frame_about_audit.setGeometry(QRect(10, 60, 621, 401))
+        self.frame_about_audit.setFrameShape(QFrame.StyledPanel)
+        self.frame_about_audit.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_30 = QHBoxLayout(self.frame_about_audit)
+        self.horizontalLayout_30.setSpacing(0)
+        self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
+        self.horizontalLayout_30.setContentsMargins(5, 5, 0, 5)
+        self.text_about_audit = QTextEdit(self.frame_about_audit)
+        self.text_about_audit.setObjectName(u"text_about_audit")
+        self.text_about_audit.setEnabled(True)
+        self.text_about_audit.setFont(font2)
+        self.text_about_audit.setStyleSheet(u"color:rgb(255,255,255);")
+        self.text_about_audit.setFrameShape(QFrame.NoFrame)
+        self.text_about_audit.setFrameShadow(QFrame.Plain)
+        self.text_about_audit.setReadOnly(True)
+        self.text_about_audit.setTextInteractionFlags(Qt.TextBrowserInteraction)
+
+        self.horizontalLayout_30.addWidget(self.text_about_audit)
+
+        self.vsb_about_audit = QScrollBar(self.frame_about_audit)
+        self.vsb_about_audit.setObjectName(u"vsb_about_audit")
+        self.vsb_about_audit.setStyleSheet(u"QScrollBar:vertical {\n"
+"	background:rgb(51,51,51);\n"
+"    width:20px;\n"
+"    margin: 0px 0px 0px 0px;\n"
+"}\n"
+"QScrollBar::handle:vertical {\n"
+"   background-color:rgb(213, 224, 78);\n"
+"}\n"
+"QScrollBar::add-page:vertical {\n"
+" 	background:rgb(51,51,51);\n"
+"}\n"
+"QScrollBar::sub-page:vertical {\n"
+" 	background:rgb(51,51,51);\n"
+"}")
+        self.vsb_about_audit.setOrientation(Qt.Vertical)
+
+        self.horizontalLayout_30.addWidget(self.vsb_about_audit)
+
+        self.lab_about_audit = QLabel(self.page_about_audit)
+        self.lab_about_audit.setObjectName(u"lab_about_audit")
+        self.lab_about_audit.setGeometry(QRect(0, 0, 710, 55))
+        self.lab_about_audit.setMinimumSize(QSize(0, 55))
+        self.lab_about_audit.setMaximumSize(QSize(16777215, 55))
+        self.lab_about_audit.setFont(font3)
+        self.lab_about_audit.setStyleSheet(u"color:rgb(255,255,255);")
         self.stackedWidget.addWidget(self.page_about_audit)
         self.page_audit = QWidget()
         self.page_audit.setObjectName(u"page_audit")
@@ -617,23 +719,6 @@ class Ui_MainWindow(object):
         self.frame_audit_main.setFrameShadow(QFrame.Plain)
         self.gridLayout = QGridLayout(self.frame_audit_main)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.lab_bullet2 = QLabel(self.frame_audit_main)
-        self.lab_bullet2.setObjectName(u"lab_bullet2")
-        self.lab_bullet2.setMaximumSize(QSize(5, 16777215))
-        self.lab_bullet2.setPixmap(QPixmap(u"icons/1x/bulletAsset 54.png"))
-
-        self.gridLayout.addWidget(self.lab_bullet2, 1, 0, 1, 1)
-
-        self.lab_audit2 = QLabel(self.frame_audit_main)
-        self.lab_audit2.setObjectName(u"lab_audit2")
-        font5 = QFont()
-        font5.setFamilies([u"Segoe UI"])
-        font5.setPointSize(14)
-        self.lab_audit2.setFont(font5)
-        self.lab_audit2.setStyleSheet(u"color:rgb(255,255,255);")
-
-        self.gridLayout.addWidget(self.lab_audit2, 1, 1, 1, 1)
-
         self.lab_bullet = QLabel(self.frame_audit_main)
         self.lab_bullet.setObjectName(u"lab_bullet")
         self.lab_bullet.setMaximumSize(QSize(5, 16777215))
@@ -641,93 +726,6 @@ class Ui_MainWindow(object):
         self.lab_bullet.setAlignment(Qt.AlignCenter)
 
         self.gridLayout.addWidget(self.lab_bullet, 0, 0, 1, 1)
-
-        self.export_path = QLineEdit(self.frame_audit_main)
-        self.export_path.setObjectName(u"export_path")
-
-        self.gridLayout.addWidget(self.export_path, 4, 1, 1, 1)
-
-        self.lab_audit_action = QLabel(self.frame_audit_main)
-        self.lab_audit_action.setObjectName(u"lab_audit_action")
-        self.lab_audit_action.setMinimumSize(QSize(0, 20))
-        self.lab_audit_action.setMaximumSize(QSize(16777215, 30))
-        font6 = QFont()
-        font6.setFamilies([u"Segoe UI"])
-        font6.setPointSize(16)
-        self.lab_audit_action.setFont(font6)
-        self.lab_audit_action.setStyleSheet(u"color:rgb(255,255,255);")
-        self.lab_audit_action.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
-
-        self.gridLayout.addWidget(self.lab_audit_action, 3, 5, 1, 2)
-
-        self.lab_audit3 = QLabel(self.frame_audit_main)
-        self.lab_audit3.setObjectName(u"lab_audit3")
-        self.lab_audit3.setFont(font5)
-
-        self.gridLayout.addWidget(self.lab_audit3, 2, 1, 1, 4)
-
-        self.browseButton = QPushButton(self.frame_audit_main)
-        self.browseButton.setObjectName(u"browseButton")
-
-        self.gridLayout.addWidget(self.browseButton, 4, 4, 1, 1)
-
-        self.horizontalSpacer = QSpacerItem(421, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout.addItem(self.horizontalSpacer, 5, 5, 1, 3)
-
-        self.lab_bullet3 = QLabel(self.frame_audit_main)
-        self.lab_bullet3.setObjectName(u"lab_bullet3")
-        self.lab_bullet3.setMaximumSize(QSize(5, 16777215))
-        self.lab_bullet3.setPixmap(QPixmap(u"icons/1x/bulletAsset 54.png"))
-
-        self.gridLayout.addWidget(self.lab_bullet3, 2, 0, 1, 1)
-
-        self.lab_audit1 = QLabel(self.frame_audit_main)
-        self.lab_audit1.setObjectName(u"lab_audit1")
-        self.lab_audit1.setMinimumSize(QSize(0, 0))
-        self.lab_audit1.setMaximumSize(QSize(16777215, 16777215))
-        self.lab_audit1.setFont(font5)
-        self.lab_audit1.setStyleSheet(u"color:rgb(255,255,255);")
-        self.lab_audit1.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
-
-        self.gridLayout.addWidget(self.lab_audit1, 0, 1, 1, 1)
-
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout.addItem(self.horizontalSpacer_2, 5, 1, 1, 1)
-
-        self.bn_audit_start = QPushButton(self.frame_audit_main)
-        self.bn_audit_start.setObjectName(u"bn_audit_start")
-        self.bn_audit_start.setMinimumSize(QSize(69, 25))
-        self.bn_audit_start.setMaximumSize(QSize(69, 25))
-        font7 = QFont()
-        font7.setFamilies([u"Segoe UI"])
-        font7.setPointSize(12)
-        self.bn_audit_start.setFont(font7)
-        self.bn_audit_start.setStyleSheet(u"QPushButton {\n"
-"	border: 2px solid rgb(51,51,51);\n"
-"	border-radius: 5px;	\n"
-"	color:rgb(255,255,255);\n"
-"	background-color: rgb(51,51,51);\n"
-"}\n"
-"QPushButton:hover {\n"
-"	border: 2px solid rgb(0,143,150);\n"
-"	background-color: rgb(8, 62, 33);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	border: 2px solid rgb(0,143,150);\n"
-"	background-color: rgb(17, 138, 73);\n"
-"}\n"
-"\n"
-"QPushButton:disabled {	\n"
-"	border-radius: 5px;	\n"
-"	border: 2px solid rgb(112,112,112);\n"
-"	background-color: rgb(112,112,112);\n"
-"}")
-        self.bn_audit_start.setCheckable(False)
-        self.bn_audit_start.setFlat(True)
-
-        self.gridLayout.addWidget(self.bn_audit_start, 3, 7, 1, 1)
 
         self.progressBar_audit = QProgressBar(self.frame_audit_main)
         self.progressBar_audit.setObjectName(u"progressBar_audit")
@@ -753,6 +751,110 @@ class Ui_MainWindow(object):
         self.progressBar_audit.setTextDirection(QProgressBar.TopToBottom)
 
         self.gridLayout.addWidget(self.progressBar_audit, 4, 5, 1, 3)
+
+        self.browseButton = QPushButton(self.frame_audit_main)
+        self.browseButton.setObjectName(u"browseButton")
+
+        self.gridLayout.addWidget(self.browseButton, 4, 4, 1, 1)
+
+        self.bn_audit_start = QPushButton(self.frame_audit_main)
+        self.bn_audit_start.setObjectName(u"bn_audit_start")
+        self.bn_audit_start.setMinimumSize(QSize(69, 25))
+        self.bn_audit_start.setMaximumSize(QSize(69, 25))
+        font5 = QFont()
+        font5.setFamilies([u"Segoe UI"])
+        font5.setPointSize(12)
+        self.bn_audit_start.setFont(font5)
+        self.bn_audit_start.setStyleSheet(u"QPushButton {\n"
+"	border: 2px solid rgb(51,51,51);\n"
+"	border-radius: 5px;	\n"
+"	color:rgb(255,255,255);\n"
+"	background-color: rgb(51,51,51);\n"
+"}\n"
+"QPushButton:hover {\n"
+"	border: 2px solid rgb(0,143,150);\n"
+"	background-color: rgb(8, 62, 33);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	border: 2px solid rgb(0,143,150);\n"
+"	background-color: rgb(17, 138, 73);\n"
+"}\n"
+"\n"
+"QPushButton:disabled {	\n"
+"	border-radius: 5px;	\n"
+"	border: 2px solid rgb(112,112,112);\n"
+"	background-color: rgb(112,112,112);\n"
+"}")
+        self.bn_audit_start.setCheckable(False)
+        self.bn_audit_start.setFlat(True)
+
+        self.gridLayout.addWidget(self.bn_audit_start, 3, 7, 1, 1)
+
+        self.lab_audit2 = QLabel(self.frame_audit_main)
+        self.lab_audit2.setObjectName(u"lab_audit2")
+        font6 = QFont()
+        font6.setFamilies([u"Segoe UI"])
+        font6.setPointSize(14)
+        self.lab_audit2.setFont(font6)
+        self.lab_audit2.setStyleSheet(u"color:rgb(255,255,255);")
+
+        self.gridLayout.addWidget(self.lab_audit2, 1, 1, 1, 1)
+
+        self.lab_bullet2 = QLabel(self.frame_audit_main)
+        self.lab_bullet2.setObjectName(u"lab_bullet2")
+        self.lab_bullet2.setMaximumSize(QSize(5, 16777215))
+        self.lab_bullet2.setPixmap(QPixmap(u"icons/1x/bulletAsset 54.png"))
+
+        self.gridLayout.addWidget(self.lab_bullet2, 1, 0, 1, 1)
+
+        self.lab_bullet3 = QLabel(self.frame_audit_main)
+        self.lab_bullet3.setObjectName(u"lab_bullet3")
+        self.lab_bullet3.setMaximumSize(QSize(5, 16777215))
+        self.lab_bullet3.setPixmap(QPixmap(u"icons/1x/bulletAsset 54.png"))
+
+        self.gridLayout.addWidget(self.lab_bullet3, 2, 0, 1, 1)
+
+        self.export_path = QLineEdit(self.frame_audit_main)
+        self.export_path.setObjectName(u"export_path")
+
+        self.gridLayout.addWidget(self.export_path, 4, 1, 1, 1)
+
+        self.lab_audit3 = QLabel(self.frame_audit_main)
+        self.lab_audit3.setObjectName(u"lab_audit3")
+        self.lab_audit3.setFont(font6)
+
+        self.gridLayout.addWidget(self.lab_audit3, 2, 1, 1, 1)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout.addItem(self.horizontalSpacer_2, 5, 1, 1, 1)
+
+        self.lab_audit1 = QLabel(self.frame_audit_main)
+        self.lab_audit1.setObjectName(u"lab_audit1")
+        self.lab_audit1.setMinimumSize(QSize(0, 0))
+        self.lab_audit1.setMaximumSize(QSize(16777215, 16777215))
+        self.lab_audit1.setFont(font6)
+        self.lab_audit1.setStyleSheet(u"color:rgb(255,255,255);")
+        self.lab_audit1.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+
+        self.gridLayout.addWidget(self.lab_audit1, 0, 1, 1, 1)
+
+        self.horizontalSpacer = QSpacerItem(421, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout.addItem(self.horizontalSpacer, 6, 5, 1, 3)
+
+        self.lab_audit_action = QLabel(self.frame_audit_main)
+        self.lab_audit_action.setObjectName(u"lab_audit_action")
+        self.lab_audit_action.setMinimumSize(QSize(0, 20))
+        self.lab_audit_action.setMaximumSize(QSize(16777215, 30))
+        font7 = QFont()
+        font7.setFamilies([u"Segoe UI"])
+        font7.setPointSize(16)
+        self.lab_audit_action.setFont(font7)
+        self.lab_audit_action.setStyleSheet(u"color:rgb(255,255,255);")
+        self.lab_audit_action.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+
+        self.gridLayout.addWidget(self.lab_audit_action, 3, 5, 1, 1)
 
 
         self.verticalLayout_7.addWidget(self.frame_audit_main)
@@ -874,7 +976,8 @@ class Ui_MainWindow(object):
 
         self.stackedWidget_settings = QStackedWidget(self.page_settings)
         self.stackedWidget_settings.setObjectName(u"stackedWidget_settings")
-        self.stackedWidget_settings.setStyleSheet(u"background:rgb(91,90,90);")
+        self.stackedWidget_settings.setStyleSheet(u"background:rgb(91,90,90);\n"
+"color: white;")
         self.page_android_contact = QWidget()
         self.page_android_contact.setObjectName(u"page_android_contact")
         self.page_android_contact.setStyleSheet(u"background:rgb(91,90,90);")
@@ -921,28 +1024,28 @@ class Ui_MainWindow(object):
         self.gridLayout_4.setContentsMargins(5, 5, 5, 5)
         self.label_8 = QLabel(self.frame_android_field)
         self.label_8.setObjectName(u"label_8")
-        self.label_8.setFont(font5)
+        self.label_8.setFont(font6)
         self.label_8.setStyleSheet(u"color:rgb(255,255,255);")
 
         self.gridLayout_4.addWidget(self.label_8, 7, 0, 1, 1)
 
         self.label_6 = QLabel(self.frame_android_field)
         self.label_6.setObjectName(u"label_6")
-        self.label_6.setFont(font5)
+        self.label_6.setFont(font6)
         self.label_6.setStyleSheet(u"color:rgb(255,255,255);")
 
         self.gridLayout_4.addWidget(self.label_6, 4, 0, 1, 1)
 
         self.label_7 = QLabel(self.frame_android_field)
         self.label_7.setObjectName(u"label_7")
-        self.label_7.setFont(font5)
+        self.label_7.setFont(font6)
         self.label_7.setStyleSheet(u"color:rgb(255,255,255);")
 
         self.gridLayout_4.addWidget(self.label_7, 5, 0, 1, 1)
 
         self.label = QLabel(self.frame_android_field)
         self.label.setObjectName(u"label")
-        self.label.setFont(font5)
+        self.label.setFont(font6)
         self.label.setStyleSheet(u"color:rgb(255,255,255);")
 
         self.gridLayout_4.addWidget(self.label, 1, 0, 1, 3)
@@ -952,7 +1055,7 @@ class Ui_MainWindow(object):
         self.line_android_name.setEnabled(False)
         self.line_android_name.setMinimumSize(QSize(300, 25))
         self.line_android_name.setMaximumSize(QSize(400, 25))
-        self.line_android_name.setFont(font7)
+        self.line_android_name.setFont(font5)
         self.line_android_name.setStyleSheet(u"QLineEdit {\n"
 "	color:rgb(255,255,255);\n"
 "	border:2px solid rgb(51,51,51);\n"
@@ -971,7 +1074,7 @@ class Ui_MainWindow(object):
 
         self.label_5 = QLabel(self.frame_android_field)
         self.label_5.setObjectName(u"label_5")
-        self.label_5.setFont(font5)
+        self.label_5.setFont(font6)
         self.label_5.setStyleSheet(u"color:rgb(255,255,255);")
 
         self.gridLayout_4.addWidget(self.label_5, 3, 0, 1, 3)
@@ -981,7 +1084,7 @@ class Ui_MainWindow(object):
         self.line_android_org.setEnabled(False)
         self.line_android_org.setMinimumSize(QSize(300, 25))
         self.line_android_org.setMaximumSize(QSize(400, 25))
-        self.line_android_org.setFont(font7)
+        self.line_android_org.setFont(font5)
         self.line_android_org.setStyleSheet(u"QLineEdit {\n"
 "	color:rgb(255,255,255);\n"
 "	border:2px solid rgb(51,51,51);\n"
@@ -1003,7 +1106,7 @@ class Ui_MainWindow(object):
         self.line_android_adress.setEnabled(False)
         self.line_android_adress.setMinimumSize(QSize(300, 25))
         self.line_android_adress.setMaximumSize(QSize(400, 25))
-        self.line_android_adress.setFont(font7)
+        self.line_android_adress.setFont(font5)
         self.line_android_adress.setStyleSheet(u"QLineEdit {\n"
 "	color:rgb(255,255,255);\n"
 "	border:2px solid rgb(51,51,51);\n"
@@ -1025,7 +1128,7 @@ class Ui_MainWindow(object):
         self.line_android_ph.setEnabled(False)
         self.line_android_ph.setMinimumSize(QSize(300, 25))
         self.line_android_ph.setMaximumSize(QSize(400, 25))
-        self.line_android_ph.setFont(font7)
+        self.line_android_ph.setFont(font5)
         self.line_android_ph.setStyleSheet(u"QLineEdit {\n"
 "	color:rgb(255,255,255);\n"
 "	border:2px solid rgb(51,51,51);\n"
@@ -1047,7 +1150,7 @@ class Ui_MainWindow(object):
         self.line_android_email.setEnabled(False)
         self.line_android_email.setMinimumSize(QSize(300, 25))
         self.line_android_email.setMaximumSize(QSize(400, 25))
-        self.line_android_email.setFont(font7)
+        self.line_android_email.setFont(font5)
         self.line_android_email.setStyleSheet(u"QLineEdit {\n"
 "	color:rgb(255,255,255);\n"
 "	border:2px solid rgb(51,51,51);\n"
@@ -1088,7 +1191,7 @@ class Ui_MainWindow(object):
         self.bn_android_contact_edit.setObjectName(u"bn_android_contact_edit")
         self.bn_android_contact_edit.setMinimumSize(QSize(69, 25))
         self.bn_android_contact_edit.setMaximumSize(QSize(69, 25))
-        self.bn_android_contact_edit.setFont(font7)
+        self.bn_android_contact_edit.setFont(font5)
         self.bn_android_contact_edit.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -1116,7 +1219,7 @@ class Ui_MainWindow(object):
         self.bn_android_contact_share.setObjectName(u"bn_android_contact_share")
         self.bn_android_contact_share.setMinimumSize(QSize(69, 25))
         self.bn_android_contact_share.setMaximumSize(QSize(69, 25))
-        self.bn_android_contact_share.setFont(font7)
+        self.bn_android_contact_share.setFont(font5)
         self.bn_android_contact_share.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -1144,7 +1247,7 @@ class Ui_MainWindow(object):
         self.bn_android_contact_delete.setObjectName(u"bn_android_contact_delete")
         self.bn_android_contact_delete.setMinimumSize(QSize(69, 25))
         self.bn_android_contact_delete.setMaximumSize(QSize(69, 25))
-        self.bn_android_contact_delete.setFont(font7)
+        self.bn_android_contact_delete.setFont(font5)
         self.bn_android_contact_delete.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -1173,7 +1276,7 @@ class Ui_MainWindow(object):
         self.bn_android_contact_save.setEnabled(False)
         self.bn_android_contact_save.setMinimumSize(QSize(69, 25))
         self.bn_android_contact_save.setMaximumSize(QSize(69, 25))
-        self.bn_android_contact_save.setFont(font7)
+        self.bn_android_contact_save.setFont(font5)
         self.bn_android_contact_save.setStyleSheet(u"QPushButton {\n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -1234,7 +1337,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_26.setContentsMargins(5, 0, 0, 0)
         self.textEdit_gamepad = QTextEdit(self.frame_textbar)
         self.textEdit_gamepad.setObjectName(u"textEdit_gamepad")
-        self.textEdit_gamepad.setFont(font7)
+        self.textEdit_gamepad.setFont(font5)
         self.textEdit_gamepad.setStyleSheet(u"color:rgb(255,255,255);")
         self.textEdit_gamepad.setFrameShape(QFrame.NoFrame)
         self.textEdit_gamepad.setFrameShadow(QFrame.Plain)
@@ -1540,7 +1643,7 @@ class Ui_MainWindow(object):
         self.checkBox_alloutputs.toggled.connect(self.checkBox_taxiout.setChecked)
         self.lineEdit_sptripid.textEdited.connect(self.lineEdit_sptripid.clear)
 
-        self.stackedWidget.setCurrentIndex(7)
+        self.stackedWidget.setCurrentIndex(5)
         self.stackedWidget_settings.setCurrentIndex(2)
 
 
@@ -1577,7 +1680,7 @@ class Ui_MainWindow(object):
         self.bn_settings.setToolTip(QCoreApplication.translate("MainWindow", u"Audit Settings", None))
 #endif // QT_CONFIG(tooltip)
         self.bn_settings.setText("")
-        self.lab_home_main_hed.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#ffffff;\">Instructions</span></p><p><br/></p></body></html>", None))
+        self.lab_home_main_hed.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Overview</p></body></html>", None))
         self.lab_home_main_disc.setText(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -1585,22 +1688,39 @@ class Ui_MainWindow(object):
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Will put instructions</p></body></html>", None))
-        self.lab_home_stat_hed.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#ffffff;\">Extra Info</span></p><p><br/></p></body></html>", None))
-        self.lab_home_stat_disc.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#ffffff;\">Boop bop do do do </span></p></body></html>", None))
-        self.lab_about_home.setText(QCoreApplication.translate("MainWindow", u"About: Home", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">This tool is used perform the weekly audit for Mileage Reimbursement. </p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">To navigate use the tool bar on the left s"
+                        "ide.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">The toggle button on the top left is used to give instructions for each tab. </p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">The top button is the home button. Here you will find the overview as well as the instructions for downloading the export. </p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margi"
+                        "n-right:0px; -qt-block-indent:0; text-indent:0px;\">The middle button is where you will go to perform the actual audit. </p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">The last button is the settings window. Go here to customize the outputs. </p></body></html>", None))
+        self.lab_home_stat_hed.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:20pt;\">Support Contacts</span></p></body></html>", None))
+        self.lab_home_stat_disc.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:7pt;\">Jordan Bailey: jbailey@rideconnection.org</span></p><p><span style=\" font-size:7pt;\">RJ Miller: rmiller@rideconnection.org</span></p><p><span style=\" font-size:7pt;\">Chris Simpson: csimpson@rideconnection.org</span></p></body></html>", None))
+        self.lab_about_home.setText(QCoreApplication.translate("MainWindow", u"Set-Up Instructions", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"Empty", None))
+        self.lab_about_settings.setText(QCoreApplication.translate("MainWindow", u"Set-Up Instructions", None))
+#if QT_CONFIG(whatsthis)
+        self.frame_about_audit.setWhatsThis("")
+#endif // QT_CONFIG(whatsthis)
+        self.lab_about_audit.setText(QCoreApplication.translate("MainWindow", u"Set-Up Instructions", None))
         self.lab_audit.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#ffffff;\">Run Audit</span></p></body></html>", None))
-        self.lab_bullet2.setText("")
-        self.lab_audit2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">Make sure appropriate settings are set</span></p></body></html>", None))
         self.lab_bullet.setText("")
-        self.export_path.setText(QCoreApplication.translate("MainWindow", u"Input Ecolane Export Path", None))
-        self.lab_audit_action.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#ffffff;\">Push to Perform Audit:</span></p></body></html>", None))
-        self.lab_audit3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt; color:#ffffff;\">Make sure the file is a .csv or .xlsx </span></p><p><span style=\" font-size:12pt;\"><br/></span></p></body></html>", None))
         self.browseButton.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
-        self.lab_bullet3.setText("")
-        self.lab_audit1.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">Select Ecolane Export Path</span></p></body></html>", None))
         self.bn_audit_start.setText(QCoreApplication.translate("MainWindow", u"Start", None))
+        self.lab_audit2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">Make sure appropriate settings are set</span></p></body></html>", None))
+        self.lab_bullet2.setText("")
+        self.lab_bullet3.setText("")
+        self.export_path.setText(QCoreApplication.translate("MainWindow", u"Input Ecolane Export Path", None))
+        self.lab_audit3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt; color:#ffffff;\">Make sure the Export file is CSV </span></p><p><span style=\" font-size:12pt;\"><br/></span></p></body></html>", None))
+        self.lab_audit1.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">Select Ecolane Export Path</span></p></body></html>", None))
+        self.lab_audit_action.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; color:#ffffff;\">Push to Perform Audit:</span></p></body></html>", None))
         self.lab_cloud_main.setText(QCoreApplication.translate("MainWindow", u"Cloud Connect", None))
 #if QT_CONFIG(tooltip)
         self.bn_settings_clean.setToolTip(QCoreApplication.translate("MainWindow", u"Clean", None))
@@ -1654,7 +1774,7 @@ class Ui_MainWindow(object):
         self.lineEdit_resultOutput_path.setText(QCoreApplication.translate("MainWindow", u"Audit Output Path", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Choose directory to output audit results. The default is the desktop.", None))
         self.browseButton_output.setText(QCoreApplication.translate("MainWindow", u"Browse", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"VACANT? TRY YOUR IMAGINATION", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u": )", None))
         self.lab_tab.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><br/></p></body></html>", None))
 #if QT_CONFIG(tooltip)
         self.frame_drag.setToolTip(QCoreApplication.translate("MainWindow", u"Drag", None))
