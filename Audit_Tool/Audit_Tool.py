@@ -11,7 +11,7 @@ from PySide6.QtWidgets import *
 # Important:
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic form.ui -o ui_form.py
-from ui.ui_form import Ui_MainWindow
+from ui.ui_form_new import Ui_MainWindow
 
 # from ui_function import UIFunction
 from util.about import *
@@ -419,8 +419,12 @@ class MainWindow(QMainWindow):
             # If only secondary audit is checked, run a Secondary Payments Audit
             try:
                 sp_trip_id = self.iso_sp_trip_id()
-                sp_flagged_trips = SecondPaymentsAudit.get_sp_flagged_trips(flag_no_pass_dups, sp_trip_id)
-                fiscal_summary = SecondPaymentsAudit.get_sp_fiscal_summary(self.payable_trips, sp_trip_id)
+                sp_flagged_trips_no_pass_dups = SecondPaymentsAudit.get_sp_flagged_trips(flag_no_pass_dups, sp_trip_id)
+                sp_flagged_trips = SecondPaymentsAudit.get_sp_flagged_trips(self.flagged_trips,sp_trip_id) 
+                sp_flagged_trip_ids = WeeklyAudit.get_flagged_trip_ids(sp_flagged_trips_no_pass_dups)
+                sp_fiscal_summary = SecondPaymentsAudit.get_sp_fiscal_summary(self.payable_trips, sp_trip_id)
+                fiscal_summary = WeeklyAudit.get_fiscal_summary(sp_fiscal_summary, sp_flagged_trip_ids)
+                
                 self.flagged_trips = sp_flagged_trips
             except Exception as e:
                 self.handle_error(str(e))
@@ -432,9 +436,10 @@ class MainWindow(QMainWindow):
                 sp_flagged_trips = SecondPaymentsAudit.get_sp_flagged_trips(flag_no_pass_dups, sp_trip_id)
                 sp_flagged_trip_ids = WeeklyAudit.get_flagged_trip_ids(sp_flagged_trips)
                 all_flag_trip_id = flagged_trip_id + sp_flagged_trip_ids
-                fiscal_summary = WeeklyAudit.get_fiscal_summary(self.payable_trips, all_flag_trip_id)
-                all_flagged_trips = SecondPaymentsAudit.get_sp_flagged_trips(flag_no_pass_dups, all_flag_trip_id)
-                self.flagged_trips = all_flagged_trips
+                weekly_payable_trips = iso_weekly_audit_date_range(self.payable_trips)
+                sp_payable_trips = SecondPaymentsAudit.get_sp_fiscal_summary(self.payable_trips, sp_trip_id)
+                all_payable_trips = pd.concat([weekly_payable_trips,sp_payable_trips], axis=0)
+                fiscal_summary = WeeklyAudit.get_fiscal_summary(all_payable_trips, all_flag_trip_id)
             except Exception as e:
                 self.handle_error(str(e))
 

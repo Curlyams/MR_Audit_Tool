@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 def xlookup(lookup_value, lookup_array, return_array, if_not_found=""):
@@ -130,3 +130,49 @@ def remove_matching_rows(df1, df2, column_df1, column_df2):
     df1_filtered = df1[~df1[column_df1].astype(str).isin(values_to_remove)]
 
     return df1_filtered
+
+
+
+# Function to return a range of dates between start_date and end_date
+def get_date_range(start_date, end_date):
+    # If start_date and end_date are strings, convert them to datetime objects
+    if isinstance(start_date, str):
+        formatted_start_date = pd.to_datetime(start_date)
+    else:
+        formatted_start_date = start_date
+
+    if isinstance(end_date, str):
+        formatted_end_date = pd.to_datetime(end_date)
+    else:
+        formatted_end_date = end_date
+
+    date_range = pd.date_range(start=formatted_start_date, end=formatted_end_date)
+
+    # Format the date_range in "mm/dd/yyyy" format
+    formatted_date_range = [date.strftime("%m/%d/%Y") for date in date_range]
+
+    return formatted_date_range
+
+def get_weekly_audit_date_range():
+    delta = timedelta(days=67)
+    today = datetime.today()
+    audit_range_end = today - timedelta(days=today.weekday() + 1)
+    audit_range_start = audit_range_end - delta
+    audit_range_start_date = audit_range_start.strftime("%m/%d/%Y")
+    audit_range_end_date = audit_range_end.strftime("%m/%d/%Y")
+    return audit_range_end_date, audit_range_start_date
+
+def iso_weekly_audit_date_range(df):
+    audit_end_date, audit_start_date = get_weekly_audit_date_range()
+
+    df = df[
+        (df["Trip Date"] >= audit_start_date)
+        & (df["Trip Date"] <= audit_end_date)
+    ]
+    return df
+
+def iso_secondary_audit_date_range(df):
+    _, audit_start_date = get_weekly_audit_date_range()
+    df["Trip Date"] = pd.to_datetime(df["Trip Date"], format="%m/%d/%Y")
+    df = df[df["Trip Date"] < audit_start_date]
+    return df

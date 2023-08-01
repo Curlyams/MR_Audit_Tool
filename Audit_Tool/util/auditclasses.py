@@ -534,7 +534,23 @@ class AuditDataFrame:
             "`Mode` == 'Reimbursement' and `Transportation Provider` != '' and `Trip Status` == 'comp' and `Mileage vs NOT-Mileage vs PR/BT` == 'Mileage' and `Distribution Date` == '' and `Cancel Type` not in @exclude_comp_cancel"
         )
         return df
+    # Function to flag trips with a value in the No Show Column
 
+    def no_show_flag(self):
+        df = self.df.copy()
+        # Returns a data frame that contains any trip with a value in the No Show Column
+        df = df.query(
+                    "`Mode` == 'Reimbursement' and `No Show Reason` != ''"
+                )
+        return df
+    # Funcion to flag trips with a QR Verification but a Trip status on cancel or no show
+    def cancel_with_qr_verification(self):
+        df = self.df.copy()
+        trip_status_expected = ["cancel", "noshow"]
+        df = df.query(
+            "`Verification` == 'QR Code Card Scan' and `Trip Status` in @trip_status_expected"
+        )
+        return df 
     def in_area_mileage_reimbursement(self):
         df = self.df.copy()
         df = df.query(

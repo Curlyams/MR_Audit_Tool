@@ -2,6 +2,11 @@ import pandas as pd
 import os
 # dict = {"A": "BLANK PROVIDER ", "B": "CANCEL with DISTRIBUTION DATE ", "C": "INCORRECT TD DATE", "D": "DUPLICATE TRIPS" ,  "E": "SINGLE LEG TRIPS", 
 #         "F": "OOA", "G" : "TRIP PURPOSE ERROR", "H": "COMP w CANCEL", "I": "EXCESS APPOINTMENTS"}
+
+"""
+This contains the column names for the fiscal summary report. It also loads additional
+data from csv files and helps format the exported data.
+"""
 fiscal_summary_cols = [
     "Client First Name",
     "Client Last Name",
@@ -44,6 +49,7 @@ flagged_cols = [
     "Fare Distance Rounded Miles",
     "Transportation Provider",
     "Provider Rate",
+    "No Show Reason"
 ]
 # List of counties in the area
 tricounty = [
@@ -72,7 +78,9 @@ flag_labels = [
     "TRIP PURPOSE ERROR",
     "COMP with CANCEL",
     "EXCESS APPOINTMENTS",
-    "Duplicate Trips (only within mileage)"
+    "Duplicate Trips (only within mileage)",
+    "NO SHOW VALUE PRESENT",
+    "CANCEL WITH QR VERIFICATION"
 ]
 
 # module_dir = os.path.dirname(__file__)
@@ -81,7 +89,7 @@ flag_labels = [
 # purpose_summary_path = os.path.join(module_dir, "purpose_summary.csv")
 import sys
 
-
+# Check if running in a frozen exe, allows for the compiled function to access the required data files
 if getattr(sys, 'frozen', False):
     module_dir = sys._MEIPASS
 else:
