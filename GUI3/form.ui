@@ -3522,6 +3522,38 @@ QScrollBar::sub-page:vertical {
                          <enum>Qt::Horizontal</enum>
                         </property>
                        </widget>
+                       <widget class="QCheckBox" name="checkBox_noshowval">
+                        <property name="geometry">
+                         <rect>
+                          <x>10</x>
+                          <y>260</y>
+                          <width>211</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>No Show Value</string>
+                        </property>
+                        <property name="checked">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                       <widget class="QCheckBox" name="checkBox_qrcancel">
+                        <property name="geometry">
+                         <rect>
+                          <x>10</x>
+                          <y>280</y>
+                          <width>211</width>
+                          <height>22</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Cancel With QR Verification</string>
+                        </property>
+                        <property name="checked">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
                        <zorder>line_3</zorder>
                        <zorder>checkBox_selectall</zorder>
                        <zorder>checkBox_bprovider</zorder>
@@ -3534,6 +3566,8 @@ QScrollBar::sub-page:vertical {
                        <zorder>checkBox_compwcan</zorder>
                        <zorder>checkBox_excapps</zorder>
                        <zorder>checkBox_paiddups</zorder>
+                       <zorder>checkBox_noshowval</zorder>
+                       <zorder>checkBox_qrcancel</zorder>
                       </widget>
                      </item>
                      <item row="7" column="4">
@@ -4155,6 +4189,38 @@ QScrollBar::sub-page:vertical {
     <hint type="destinationlabel">
      <x>386</x>
      <y>453</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_selectall</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_noshowval</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>266</x>
+     <y>196</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>269</x>
+     <y>430</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_selectall</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>checkBox_qrcancel</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>290</x>
+     <y>196</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>294</x>
+     <y>452</y>
     </hint>
    </hints>
   </connection>
